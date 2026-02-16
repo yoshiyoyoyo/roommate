@@ -9,7 +9,6 @@
     <!-- 引入 Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        /* 定義主色調與動畫 */
         :root {
             --brand-color: #28c8c8;
             --brand-hover: #1eb0b0;
@@ -20,17 +19,25 @@
             to { opacity: 1; transform: translateY(0); }
         }
         .animate-fade-in {
-            animation: fadeIn 0.5s ease-out forwards;
+            animation: fadeIn 0.4s ease-out forwards;
         }
         html {
             scroll-behavior: smooth;
         }
-        /* 自定義主色類別 */
-        .text-brand { color: var(--brand-color); }
-        .bg-brand { background-color: var(--brand-color); }
-        .bg-brand-light { background-color: var(--brand-light); }
-        .border-brand { border-color: var(--brand-color); }
-        .hover-bg-brand:hover { background-color: var(--brand-hover); }
+        .phone-frame {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .active-view {
+            border-color: var(--brand-color);
+            transform: scale(1.02);
+            box-shadow: 0 25px 50px -12px rgba(40, 200, 200, 0.15);
+        }
+        .inactive-view {
+            opacity: 0.5;
+            filter: grayscale(40%);
+            pointer-events: none;
+            transform: scale(0.98);
+        }
     </style>
 </head>
 <body class="bg-white font-sans text-gray-800">
@@ -47,7 +54,7 @@
                 <a href="#pricing" class="hover:text-[#28c8c8] transition-colors">價目表</a>
             </nav>
             <a href="https://roomie-chi.vercel.app/" class="bg-[#28c8c8] text-white px-5 py-2 rounded-full text-sm font-bold shadow-sm hover:bg-[#1eb0b0] transition-all hover:scale-105">
-                加入計畫
+                在 LINE 群組建立服務
             </a>
         </div>
     </header>
@@ -59,8 +66,8 @@
                 不想做家事？<br/><span class="text-[#28c8c8]">那就出錢吧！</span>
             </h1>
             <p class="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mb-10">
-                將「值日生」變成「懸賞令」。<br/>
-                解決誰做家事的爭吵，讓勞務變成你的零用錢。
+                將「值日生」變成「懸賞令」<br/>
+                解決誰做家事的爭吵，讓勞務變成你的零用錢
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
                 <a href="#simulation" class="bg-[#28c8c8] text-white px-8 py-4 rounded-xl font-bold shadow-lg hover:bg-[#1eb0b0] transition-all flex items-center justify-center gap-2">
@@ -115,124 +122,149 @@
     </div>
 
     <!-- 模擬器區塊 (Simulator) -->
-    <section id="simulation" class="scroll-mt-20 py-20 px-4 md:px-8 max-w-5xl mx-auto">
+    <section id="simulation" class="scroll-mt-20 py-20 px-4 md:px-8 max-w-6xl mx-auto bg-gray-50 rounded-[3rem]">
         <div class="text-center mb-12">
             <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                互動體驗：這怎麼運作？
+                雙視角體驗：這怎麼運作？
             </h2>
             <div class="w-16 h-1 bg-[#28c8c8] mx-auto rounded-full mb-6"></div>
-            <p class="text-gray-500">試試看點擊下方的模擬器。假設這週輪到你掃廁所，但你不想做...</p>
+            <p class="text-gray-500">左右對照室友 A (釋出者) 與 室友 B (搶單者) 的真實操作感</p>
         </div>
 
-        <div class="bg-slate-900 p-6 md:p-10 rounded-3xl shadow-2xl text-white max-w-3xl mx-auto relative overflow-hidden min-h-[420px]">
-            <!-- Background Decoration -->
-            <div class="absolute -top-10 -right-10 opacity-5 pointer-events-none">
-                <i data-lucide="sparkles" width="240" height="240"></i>
+        <!-- 模擬器本體 -->
+        <div class="grid md:grid-cols-2 gap-8 items-start mb-12">
+            
+            <!-- 左側：室友 A (執行人/釋出者) -->
+            <div id="view-a" class="phone-frame active-view bg-white p-6 rounded-[2.5rem] border-2 border-transparent">
+                <div class="flex justify-between items-center mb-6">
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 rounded-full bg-[#28c8c8] text-white flex items-center justify-center text-[10px] font-bold">A</div>
+                        <span class="font-bold text-sm">室友 A (值日生)</span>
+                    </div>
+                    <div class="text-right">
+                        <span id="wallet-a" class="font-mono font-bold text-gray-900">$0</span>
+                    </div>
+                </div>
+
+                <div id="a-content" class="space-y-6">
+                    <!-- LINE 通知樣式 -->
+                    <div class="bg-white rounded-2xl p-4 shadow-lg border border-gray-50 flex items-start gap-3">
+                        <div class="w-10 h-10 bg-[#28c8c8] rounded-xl flex items-center justify-center text-white shrink-0 shadow-lg shadow-[#28c8c8]/10">
+                            <i data-lucide="bell" size="18"></i>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex justify-between items-center mb-0.5">
+                                <span class="text-[10px] font-bold text-[#28c8c8]">家事交易所</span>
+                                <span class="text-[10px] text-gray-400">現在</span>
+                            </div>
+                            <h4 class="text-sm font-bold text-gray-900">🧹 輪到你掃廁所了！</h4>
+                            <p class="text-[11px] text-gray-500">本週預定執行人：室友 A</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-[#f0fdfa] p-4 rounded-2xl text-xs text-gray-600 border border-[#eaffff]">
+                        週末要去約會，實在不想掃廁所...該怎麼辦？
+                    </div>
+
+                    <div class="flex flex-col gap-2">
+                        <button onclick="doSelf()" class="w-full py-3 bg-gray-50 hover:bg-gray-100 text-gray-500 rounded-xl text-xs font-semibold transition-all">
+                            認命自己做 (+$0)
+                        </button>
+                        <button onclick="releaseTask()" class="w-full py-3 bg-[#28c8c8] hover:bg-[#1eb0b0] text-white rounded-xl text-sm font-bold transition-all shadow-md shadow-[#28c8c8]/20">
+                            支付 $80 釋出任務
+                        </button>
+                    </div>
+                    <p id="feedback-msg" class="text-center text-orange-500 text-[10px] font-semibold hidden"></p>
+                </div>
+
+                <div id="a-done" class="hidden animate-fade-in space-y-4 py-8">
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i data-lucide="check" size="24"></i>
+                        </div>
+                        <h4 class="font-bold text-gray-900">任務已成功釋出</h4>
+                        <p class="text-xs text-gray-500 mt-2">帳戶已預扣賞金，等待他人承接</p>
+                    </div>
+                </div>
             </div>
 
-            <div class="mb-8 flex justify-between items-center bg-white/5 p-5 rounded-2xl backdrop-blur-md border border-white/10">
-                <div class="flex flex-col">
-                    <span class="text-[10px] text-[#28c8c8] font-bold uppercase tracking-[0.2em] mb-1">Scenario Simulation</span>
-                    <span class="font-bold text-xl">本週掃廁所任務</span>
-                </div>
-                <div class="flex gap-6 text-sm">
-                    <div class="flex flex-col items-end">
-                        <span class="text-gray-400 text-xs">室友 A (值日生)</span>
-                        <span id="wallet-a" class="font-mono font-bold text-lg text-white">$0</span>
+            <!-- 右側：室友 B (搶單者) -->
+            <div id="view-b" class="phone-frame inactive-view bg-white p-6 rounded-[2.5rem] border-2 border-transparent">
+                <div class="flex justify-between items-center mb-6">
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 rounded-full bg-gray-400 text-white flex items-center justify-center text-[10px] font-bold">B</div>
+                        <span class="font-bold text-sm">室友 B (搶單者)</span>
                     </div>
-                    <div class="w-px h-8 bg-white/20"></div>
-                    <div class="flex flex-col items-end">
-                        <span class="text-gray-400 text-xs">室友 B (搶單者)</span>
-                        <span id="wallet-b" class="font-mono font-bold text-lg text-white">$0</span>
+                    <div class="text-right">
+                        <span id="wallet-b" class="font-mono font-bold text-gray-900">$0</span>
                     </div>
                 </div>
-            </div>
 
-            <div id="step-1" class="animate-fade-in space-y-6">
-                <div class="flex items-center gap-5">
-                    <div class="w-14 h-14 bg-yellow-400 text-gray-900 rounded-2xl flex items-center justify-center text-3xl shadow-lg shadow-yellow-400/20">🧹</div>
-                    <div>
-                        <h4 class="text-xl font-bold">系統通知：輪到你掃廁所了！</h4>
-                        <p class="text-gray-400 text-sm">目前的預定執行人：室友 A</p>
-                    </div>
+                <div id="b-idle" class="flex flex-col items-center justify-center py-16 text-gray-200">
+                    <i data-lucide="inbox" size="40" class="mb-4"></i>
+                    <p class="text-xs font-medium">尚無可接單的懸賞...</p>
                 </div>
-                <p class="text-gray-300 leading-relaxed">週末要出門旅行，實在不想掃廁所...該怎麼辦？</p>
-                <div class="flex flex-col sm:flex-row gap-4 pt-2">
-                    <button onclick="doSelf()" class="flex-1 py-4 bg-gray-700 hover:bg-gray-600 rounded-xl font-semibold transition-all">
-                        認命自己做
+
+                <div id="b-alert" class="hidden animate-fade-in space-y-6">
+                    <!-- LINE 通知樣式 - 懸賞 -->
+                    <div class="bg-white rounded-2xl p-4 shadow-lg border border-red-50 flex items-start gap-3 ring-2 ring-red-50/50">
+                        <div class="w-10 h-10 bg-red-500 rounded-xl flex items-center justify-center text-white shrink-0 shadow-lg shadow-red-500/20 animate-pulse">
+                            <i data-lucide="megaphone" size="18"></i>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex justify-between items-center mb-0.5">
+                                <span class="text-[10px] font-bold text-red-500">緊急懸賞通知</span>
+                                <span class="text-[10px] text-gray-400">現在</span>
+                            </div>
+                            <h4 class="text-sm font-bold text-gray-900">🚨 有人不想掃廁所！</h4>
+                            <p class="text-[11px] text-red-500 font-bold">只要完成即可現賺 $80</p>
+                        </div>
+                    </div>
+                    <button onclick="takeTask()" class="w-full py-3 bg-[#28c8c8] hover:bg-[#1eb0b0] text-white rounded-xl font-bold text-sm transition-all shadow-lg shadow-[#28c8c8]/20 flex items-center justify-center gap-2">
+                        <i data-lucide="zap" size="16"></i> 我要搶單 (+$80)
                     </button>
-                    <button onclick="releaseTask()" class="flex-1 py-4 bg-[#28c8c8] hover:bg-[#1eb0b0] rounded-xl font-bold transition-all shadow-lg shadow-[#28c8c8]/20">
-                        支付 $80 釋出任務
-                    </button>
                 </div>
-                <p id="feedback-msg" class="text-center text-yellow-300 font-medium hidden"></p>
+
+                <div id="b-done" class="hidden animate-fade-in space-y-4 py-8">
+                    <div class="text-center">
+                        <div class="w-14 h-14 bg-emerald-500 text-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-xl shadow-emerald-200">
+                            <i data-lucide="dollar-sign" size="28"></i>
+                        </div>
+                        <h4 class="font-bold text-emerald-900">搶單成功！</h4>
+                        <p class="text-xs text-emerald-600 mt-2">任務已歸入您的名下，請至首頁回報</p>
+                    </div>
+                </div>
             </div>
 
-            <div id="step-2" class="hidden animate-fade-in space-y-6">
-                <div class="flex items-center gap-5">
-                    <div class="w-14 h-14 bg-red-500 rounded-2xl flex items-center justify-center animate-pulse text-white shadow-lg shadow-red-500/20">
-                        <i data-lucide="megaphone" size="28"></i>
-                    </div>
-                    <div>
-                        <h4 class="text-xl font-bold">任務釋出成功！</h4>
-                        <p class="text-[#28c8c8] font-bold text-lg">賞金：$80</p>
-                    </div>
-                </div>
-                <p class="text-gray-300 leading-relaxed">室友 A 已支付賞金。現在任何室友點擊接單，完成後即可獲得這筆錢！</p>
-                <button onclick="takeTask()" class="w-full py-4 bg-emerald-500 hover:bg-emerald-400 rounded-xl font-bold text-lg transition-all shadow-lg shadow-emerald-500/20 flex items-center justify-center gap-2">
-                    <i data-lucide="zap"></i> 我要接單 (+$80)
-                </button>
-            </div>
-
-            <div id="step-3" class="hidden animate-fade-in space-y-6">
-                <div class="flex items-center gap-5">
-                    <div class="w-14 h-14 bg-emerald-500 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-emerald-500/20">
-                        <i data-lucide="check" size="32"></i>
-                    </div>
-                    <div>
-                        <h4 class="text-xl font-bold">任務結案</h4>
-                        <p class="text-emerald-400">室友 B 已完成並拍照上傳</p>
-                    </div>
-                </div>
-                <div class="bg-white/5 p-5 rounded-2xl border border-white/10 space-y-3 font-mono text-sm">
-                    <div class="flex justify-between items-center text-gray-500 mb-1">
-                        <span>Transaction Detail</span>
-                        <span>Completed</span>
-                    </div>
-                    <div class="flex justify-between">
-                        <span class="text-gray-300">室友 A (釋出者)</span>
-                        <span class="text-red-400">-$80</span>
-                    </div>
-                    <div class="flex justify-between">
-                        <span class="text-gray-300">室友 B (執行者)</span>
-                        <span class="text-emerald-400">+$80</span>
-                    </div>
-                </div>
-                <button onclick="resetSim()" class="w-full py-4 border border-white/20 hover:bg-white/5 rounded-xl font-medium transition-all">
-                    重新體驗模擬
-                </button>
-            </div>
         </div>
 
-        <!-- Progress Flow -->
+        <!-- 重置按鈕 -->
+        <div class="flex justify-center">
+            <button onclick="resetSim()" class="flex items-center gap-2 px-8 py-3 bg-white border-2 border-[#28c8c8] text-[#28c8c8] rounded-full font-bold hover:bg-[#f0fdfa] transition-all shadow-sm active:scale-95">
+                <i data-lucide="rotate-ccw" size="18"></i>
+                重置模擬
+            </button>
+        </div>
+
+        <!-- 流程 -->
         <div class="mt-20 grid md:grid-cols-4 gap-8 text-center">
             <div class="relative group">
                 <div class="w-12 h-12 bg-[#f0fdfa] text-[#28c8c8] rounded-2xl flex items-center justify-center font-bold mx-auto mb-4 group-hover:scale-110 transition-transform">1</div>
                 <h4 class="font-bold text-gray-800 mb-2">系統派工</h4>
                 <p class="text-sm text-gray-500">每週自動分配值日生</p>
-                <div class="hidden md:block absolute top-6 -right-1/2 w-full h-px bg-gray-100 -z-10"></div>
+                <div class="hidden md:block absolute top-6 -right-1/2 w-full h-px bg-gray-200 -z-10"></div>
             </div>
             <div class="relative group">
                 <div class="w-12 h-12 bg-[#f0fdfa] text-[#28c8c8] rounded-2xl flex items-center justify-center font-bold mx-auto mb-4 group-hover:scale-110 transition-transform">2</div>
                 <h4 class="font-bold text-gray-800 mb-2">自由選擇</h4>
                 <p class="text-sm text-gray-500">自己執行，或付費懸賞</p>
-                <div class="hidden md:block absolute top-6 -right-1/2 w-full h-px bg-gray-100 -z-10"></div>
+                <div class="hidden md:block absolute top-6 -right-1/2 w-full h-px bg-gray-200 -z-10"></div>
             </div>
             <div class="relative group">
                 <div class="w-12 h-12 bg-[#f0fdfa] text-[#28c8c8] rounded-2xl flex items-center justify-center font-bold mx-auto mb-4 group-hover:scale-110 transition-transform">3</div>
                 <h4 class="font-bold text-gray-800 mb-2">他人搶單</h4>
                 <p class="text-sm text-gray-500">重賞之下必有勇夫</p>
-                <div class="hidden md:block absolute top-6 -right-1/2 w-full h-px bg-gray-100 -z-10"></div>
+                <div class="hidden md:block absolute top-6 -right-1/2 w-full h-px bg-gray-200 -z-10"></div>
             </div>
             <div class="group">
                 <div class="w-12 h-12 bg-orange-50 text-orange-500 rounded-2xl flex items-center justify-center font-bold mx-auto mb-4 group-hover:scale-110 transition-transform">4</div>
@@ -245,7 +277,7 @@
     </section>
 
     <!-- 價目表 (Pricing) -->
-    <section id="pricing" class="py-20 px-4 md:px-8 max-w-5xl mx-auto bg-gray-50/50 rounded-[3rem]">
+    <section id="pricing" class="py-20 px-4 md:px-8 max-w-5xl mx-auto">
         <div class="text-center mb-12">
             <h2 class="text-3xl font-bold text-gray-900 mb-4">草擬價目表</h2>
             <div class="w-16 h-1 bg-[#28c8c8] mx-auto rounded-full"></div>
@@ -370,16 +402,9 @@
             const elWalletA = document.getElementById('wallet-a');
             const elWalletB = document.getElementById('wallet-b');
             elWalletA.innerText = walletA < 0 ? `-$${Math.abs(walletA)}` : `$${walletA}`;
-            elWalletA.className = `font-mono font-bold text-lg ${walletA < 0 ? 'text-red-400' : 'text-white'}`;
+            elWalletA.className = `font-mono font-bold text-lg ${walletA < 0 ? 'text-red-400' : 'text-gray-900'}`;
             elWalletB.innerText = walletB > 0 ? `+$${walletB}` : `$${walletB}`;
-            elWalletB.className = `font-mono font-bold text-lg ${walletB > 0 ? 'text-emerald-400' : 'text-white'}`;
-        }
-
-        function showStep(stepNum) {
-            document.getElementById('step-1').classList.add('hidden');
-            document.getElementById('step-2').classList.add('hidden');
-            document.getElementById('step-3').classList.add('hidden');
-            document.getElementById(`step-${stepNum}`).classList.remove('hidden');
+            elWalletB.className = `font-mono font-bold text-lg ${walletB > 0 ? 'text-emerald-500' : 'text-gray-900'}`;
         }
 
         function doSelf() {
@@ -392,20 +417,42 @@
         function releaseTask() {
             walletA = -80;
             updateWallets();
-            showStep(2);
+            
+            document.getElementById('a-content').classList.add('hidden');
+            document.getElementById('a-done').classList.remove('hidden');
+            document.getElementById('view-a').classList.remove('active-view');
+            document.getElementById('view-a').classList.add('inactive-view');
+
+            document.getElementById('view-b').classList.remove('inactive-view');
+            document.getElementById('view-b').classList.add('active-view');
+            document.getElementById('b-idle').classList.add('hidden');
+            document.getElementById('b-alert').classList.remove('hidden');
         }
 
         function takeTask() {
             walletB = 80;
             updateWallets();
-            showStep(3);
+
+            document.getElementById('b-alert').classList.add('hidden');
+            document.getElementById('b-done').classList.remove('hidden');
         }
 
         function resetSim() {
             walletA = 0;
             walletB = 0;
             updateWallets();
-            showStep(1);
+
+            document.getElementById('a-content').classList.remove('hidden');
+            document.getElementById('a-done').classList.add('hidden');
+            document.getElementById('view-a').classList.add('active-view');
+            document.getElementById('view-a').classList.remove('inactive-view');
+
+            document.getElementById('b-idle').classList.remove('hidden');
+            document.getElementById('b-alert').classList.add('hidden');
+            document.getElementById('b-done').classList.add('hidden');
+            document.getElementById('view-b').classList.add('inactive-view');
+            document.getElementById('view-b').classList.remove('active-view');
+
             document.getElementById('feedback-msg').classList.add('hidden');
         }
     </script>

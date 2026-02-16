@@ -99,7 +99,7 @@
         
         .sim-inactive {
             opacity: 0.6;
-            filter: grayscale(40%);
+            filter: grayscale(40%); /* 移除 blur(1px) 以解決文字不清楚的問題 */
             transform: scale(0.95);
             z-index: 0;
         }
@@ -176,6 +176,7 @@
     <!-- 痛點 (Features) -->
     <section id="problem" class="py-24 px-6 relative">
         <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
+            <!-- Card 1 -->
             <div class="lovable-card p-10 flex flex-col items-center text-center group">
                 <div class="w-16 h-16 bg-[#f0fdfa] rounded-2xl flex items-center justify-center text-[#28c8c8] mb-6 group-hover:scale-110 transition-transform duration-300">
                     <i data-lucide="users" size="32"></i>
@@ -186,6 +187,7 @@
                 </p>
             </div>
 
+            <!-- Card 2 -->
             <div class="lovable-card p-10 flex flex-col items-center text-center relative border-[#28c8c8]/30 bg-white">
                 <div class="w-16 h-16 bg-[#28c8c8] rounded-2xl flex items-center justify-center text-white mb-6 shadow-lg shadow-[#28c8c8]/30">
                     <i data-lucide="sparkles" size="32"></i>
@@ -196,6 +198,7 @@
                 </p>
             </div>
 
+            <!-- Card 3 -->
             <div class="lovable-card p-10 flex flex-col items-center text-center group">
                 <div class="w-16 h-16 bg-[#f0fdfa] rounded-2xl flex items-center justify-center text-[#28c8c8] mb-6 group-hover:scale-110 transition-transform duration-300">
                     <i data-lucide="wallet" size="32"></i>
@@ -213,13 +216,12 @@
         <div class="max-w-6xl mx-auto bg-slate-50 rounded-[3rem] p-8 md:p-16 border border-white shadow-inner">
             <div class="text-center mb-16">
                 <h2 class="text-h1 font-black text-slate-900 mb-6">雙視角體驗</h2>
-                <!-- 調整：增加 whitespace-nowrap 並在手機版縮小 padding 和字體 -->
+                <!-- 修改為「值日生 • 搶單者」 -->
                 <p class="text-body text-slate-500 font-medium bg-white inline-block px-4 md:px-6 py-2 rounded-full border border-slate-100 shadow-sm whitespace-nowrap text-sm md:text-base">
-                    室友 A (釋出者) <span class="mx-2 text-[#28c8c8]">•</span> 室友 B (搶單者)
+                    值日生 <span class="mx-2 text-[#28c8c8]">•</span> 搶單者
                 </p>
             </div>
 
-            <!-- 調整：mb-16 改為 mb-8，拉近與重置按鈕的距離 -->
             <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-start mb-8">
                 
                 <!-- Roommate A -->
@@ -253,8 +255,8 @@
                             週末要去約會，實在不想掃廁所...該怎麼辦？
                         </div>
 
-                        <!-- 調整：按鈕並排，gap 在手機版為 2，md 為 3，字體在手機版為 text-xs -->
-                        <div class="flex gap-2 md:gap-3">
+                        <!-- 調整：手機版 (flex-col) 垂直排列，電腦版 (md:flex-row) 左右並排 -->
+                        <div class="flex flex-col md:flex-row gap-2 md:gap-3">
                             <button onclick="doSelf()" class="flex-1 py-3 md:py-4 bg-slate-100 hover:bg-slate-200 text-slate-500 rounded-2xl text-xs md:text-sm font-bold transition-all px-1">
                                 認命自己做 (+$0)
                             </button>

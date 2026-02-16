@@ -216,7 +216,6 @@
         <div class="max-w-6xl mx-auto bg-slate-50 rounded-[3rem] p-8 md:p-16 border border-white shadow-inner">
             <div class="text-center mb-16">
                 <h2 class="text-h1 font-black text-slate-900 mb-6">雙視角體驗</h2>
-                <!-- 修改為「值日生 • 搶單者」 -->
                 <p class="text-body text-slate-500 font-medium bg-white inline-block px-4 md:px-6 py-2 rounded-full border border-slate-100 shadow-sm whitespace-nowrap text-sm md:text-base">
                     值日生 <span class="mx-2 text-[#28c8c8]">•</span> 搶單者
                 </p>
@@ -255,12 +254,12 @@
                             週末要去約會，實在不想掃廁所...該怎麼辦？
                         </div>
 
-                        <!-- 調整：維持上下排列 (flex-col)，但將字體改回 text-sm 並移除 px-1 -->
+                        <!-- 調整：統一使用 py-4 -->
                         <div class="flex flex-col md:flex-row gap-3">
-                            <button onclick="doSelf()" class="flex-1 py-3 md:py-4 bg-slate-100 hover:bg-slate-200 text-slate-500 rounded-2xl text-sm font-bold transition-all">
+                            <button onclick="doSelf()" class="flex-1 py-4 bg-slate-100 hover:bg-slate-200 text-slate-500 rounded-2xl text-sm font-bold transition-all">
                                 認命自己做 (+$0)
                             </button>
-                            <button onclick="releaseTask()" class="flex-1 py-3 md:py-4 btn-primary text-white rounded-2xl text-sm font-bold transition-all">
+                            <button onclick="releaseTask()" class="flex-1 py-4 btn-primary text-white rounded-2xl text-sm font-bold transition-all">
                                 支付 $80 釋出任務
                             </button>
                         </div>

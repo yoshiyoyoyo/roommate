@@ -99,7 +99,7 @@
         
         .sim-inactive {
             opacity: 0.6;
-            filter: grayscale(40%); /* 移除 blur(1px) 以解決文字不清楚的問題 */
+            filter: grayscale(40%);
             transform: scale(0.95);
             z-index: 0;
         }
@@ -152,17 +152,12 @@
         <div class="max-w-4xl mx-auto relative z-10">
             <!-- 標題區域 -->
             <h1 class="mb-8 drop-shadow-sm">
-                <!-- 1. 不想做家事？ 不要粗體 顏色為67777E 20px -->
                 <span class="text-[#67777E] text-[20px] font-normal block mb-2">不想做家事？</span>
-                <!-- 下方標題保持原 Hero 大小 -->
                 <span class="text-slate-900 text-hero font-black">那就<span class="text-[#28c8c8]">出錢</span>吧！</span>
             </h1>
             
-            <!-- 2. 副標題調整 -->
             <div class="mb-12 max-w-2xl mx-auto flex flex-col gap-3">
-                <!-- 第一列 顏色為67777E 20px -->
                 <p class="text-[#67777E] text-[20px] font-medium">將「值日生」變成「懸賞令」</p>
-                <!-- 第二列 顏色為67777ECC 18px -->
                 <p class="text-[#67777E]/80 text-[18px]">解決誰做家事的爭吵，讓勞務變成你的零用錢</p>
             </div>
             
@@ -181,7 +176,6 @@
     <!-- 痛點 (Features) -->
     <section id="problem" class="py-24 px-6 relative">
         <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
-            <!-- Card 1 -->
             <div class="lovable-card p-10 flex flex-col items-center text-center group">
                 <div class="w-16 h-16 bg-[#f0fdfa] rounded-2xl flex items-center justify-center text-[#28c8c8] mb-6 group-hover:scale-110 transition-transform duration-300">
                     <i data-lucide="users" size="32"></i>
@@ -192,7 +186,6 @@
                 </p>
             </div>
 
-            <!-- Card 2 -->
             <div class="lovable-card p-10 flex flex-col items-center text-center relative border-[#28c8c8]/30 bg-white">
                 <div class="w-16 h-16 bg-[#28c8c8] rounded-2xl flex items-center justify-center text-white mb-6 shadow-lg shadow-[#28c8c8]/30">
                     <i data-lucide="sparkles" size="32"></i>
@@ -203,7 +196,6 @@
                 </p>
             </div>
 
-            <!-- Card 3 -->
             <div class="lovable-card p-10 flex flex-col items-center text-center group">
                 <div class="w-16 h-16 bg-[#f0fdfa] rounded-2xl flex items-center justify-center text-[#28c8c8] mb-6 group-hover:scale-110 transition-transform duration-300">
                     <i data-lucide="wallet" size="32"></i>
@@ -221,12 +213,14 @@
         <div class="max-w-6xl mx-auto bg-slate-50 rounded-[3rem] p-8 md:p-16 border border-white shadow-inner">
             <div class="text-center mb-16">
                 <h2 class="text-h1 font-black text-slate-900 mb-6">雙視角體驗</h2>
-                <p class="text-body text-slate-500 font-medium bg-white inline-block px-6 py-2 rounded-full border border-slate-100 shadow-sm">
+                <!-- 調整：增加 whitespace-nowrap 並在手機版縮小 padding 和字體 -->
+                <p class="text-body text-slate-500 font-medium bg-white inline-block px-4 md:px-6 py-2 rounded-full border border-slate-100 shadow-sm whitespace-nowrap text-sm md:text-base">
                     室友 A (釋出者) <span class="mx-2 text-[#28c8c8]">•</span> 室友 B (搶單者)
                 </p>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-start mb-16">
+            <!-- 調整：mb-16 改為 mb-8，拉近與重置按鈕的距離 -->
+            <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-start mb-8">
                 
                 <!-- Roommate A -->
                 <div id="view-a" class="simulator-view sim-active p-8">
@@ -259,11 +253,12 @@
                             週末要去約會，實在不想掃廁所...該怎麼辦？
                         </div>
 
-                        <div class="flex gap-3">
-                            <button onclick="doSelf()" class="flex-1 py-4 bg-slate-100 hover:bg-slate-200 text-slate-500 rounded-2xl text-sm font-bold transition-all">
+                        <!-- 調整：按鈕並排，gap 在手機版為 2，md 為 3，字體在手機版為 text-xs -->
+                        <div class="flex gap-2 md:gap-3">
+                            <button onclick="doSelf()" class="flex-1 py-3 md:py-4 bg-slate-100 hover:bg-slate-200 text-slate-500 rounded-2xl text-xs md:text-sm font-bold transition-all px-1">
                                 認命自己做 (+$0)
                             </button>
-                            <button onclick="releaseTask()" class="flex-1 py-4 btn-primary text-white rounded-2xl text-sm font-bold transition-all">
+                            <button onclick="releaseTask()" class="flex-1 py-3 md:py-4 btn-primary text-white rounded-2xl text-xs md:text-sm font-bold transition-all px-1">
                                 支付 $80 釋出任務
                             </button>
                         </div>
@@ -290,7 +285,6 @@
                         <span id="wallet-b" class="font-mono font-bold text-h2 text-slate-800">$0</span>
                     </div>
 
-                    <!-- 3. 尚無可接單的懸賞...不要粗體 (移除 font-bold) -->
                     <div id="b-idle" class="flex flex-col items-center justify-center py-24 text-slate-500">
                         <i data-lucide="inbox" size="48" class="mb-4 opacity-50"></i>
                         <p class="text-sm">尚無可接單的懸賞...</p>

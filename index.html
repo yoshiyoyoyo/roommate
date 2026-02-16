@@ -255,12 +255,12 @@
                             週末要去約會，實在不想掃廁所...該怎麼辦？
                         </div>
 
-                        <!-- 調整：手機版 (flex-col) 垂直排列，電腦版 (md:flex-row) 左右並排 -->
-                        <div class="flex flex-col md:flex-row gap-2 md:gap-3">
-                            <button onclick="doSelf()" class="flex-1 py-3 md:py-4 bg-slate-100 hover:bg-slate-200 text-slate-500 rounded-2xl text-xs md:text-sm font-bold transition-all px-1">
+                        <!-- 調整：維持上下排列 (flex-col)，但將字體改回 text-sm 並移除 px-1 -->
+                        <div class="flex flex-col md:flex-row gap-3">
+                            <button onclick="doSelf()" class="flex-1 py-3 md:py-4 bg-slate-100 hover:bg-slate-200 text-slate-500 rounded-2xl text-sm font-bold transition-all">
                                 認命自己做 (+$0)
                             </button>
-                            <button onclick="releaseTask()" class="flex-1 py-3 md:py-4 btn-primary text-white rounded-2xl text-xs md:text-sm font-bold transition-all px-1">
+                            <button onclick="releaseTask()" class="flex-1 py-3 md:py-4 btn-primary text-white rounded-2xl text-sm font-bold transition-all">
                                 支付 $80 釋出任務
                             </button>
                         </div>

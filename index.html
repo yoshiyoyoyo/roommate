@@ -12,366 +12,378 @@
         :root {
             --brand-color: #28c8c8;
             --brand-hover: #1eb0b0;
-            --brand-light: #f0fdfa;
+            --brand-dark: #167a7a; /* 提升對比度以符合 WCAG */
+            --brand-soft: #e6f9f9;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+
+        /* 夢幻背景動畫 */
+        body {
+            background: linear-gradient(135deg, #f0fdfa 0%, #ffffff 50%, #f5f3ff 100%);
+            min-height: 100vh;
         }
-        .animate-fade-in {
-            animation: fadeIn 0.4s ease-out forwards;
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
         }
-        html {
-            scroll-behavior: smooth;
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
         }
+
+        /* 毛玻璃效果 */
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* 字級限制控制 */
+        .t-hero { font-size: 3rem; line-height: 1.2; } /* 48px */
+        .t-h1 { font-size: 1.875rem; line-height: 2.25rem; } /* 30px */
+        .t-h2 { font-size: 1.25rem; line-height: 1.75rem; } /* 20px */
+        .t-body { font-size: 1rem; line-height: 1.5rem; } /* 16px */
+        .t-small { font-size: 0.875rem; line-height: 1.25rem; } /* 14px */
+        .t-xs { font-size: 0.75rem; line-height: 1rem; } /* 12px - 最小值 */
+
+        html { scroll-behavior: smooth; }
+
         .phone-frame {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .active-view {
-            border-color: var(--brand-color);
             transform: scale(1.02);
-            box-shadow: 0 25px 50px -12px rgba(40, 200, 200, 0.15);
+            box-shadow: 0 30px 60px -12px rgba(40, 200, 200, 0.15);
         }
         .inactive-view {
-            opacity: 0.5;
-            filter: grayscale(40%);
+            opacity: 0.4;
+            filter: blur(1px) grayscale(20%);
             pointer-events: none;
-            transform: scale(0.98);
+            transform: scale(0.95);
         }
     </style>
 </head>
-<body class="bg-white font-sans text-gray-800">
+<body class="font-sans text-gray-800">
 
     <!-- 導航列 -->
-    <header class="bg-white/80 backdrop-blur-md border-b sticky top-0 z-50">
-        <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-            <div class="flex items-center gap-2 font-bold text-xl text-[#28c8c8]">
+    <header class="glass sticky top-0 z-50 border-b border-white/20">
+        <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-2 font-bold text-2xl text-[#167a7a]">
                 <span>家事交易所</span>
             </div>
-            <nav class="hidden md:flex gap-6 text-sm font-medium text-gray-500">
+            <nav class="hidden md:flex gap-8 t-small font-semibold text-gray-500">
                 <a href="#problem" class="hover:text-[#28c8c8] transition-colors">為什麼需要？</a>
                 <a href="#simulation" class="hover:text-[#28c8c8] transition-colors">怎麼運作？</a>
                 <a href="#pricing" class="hover:text-[#28c8c8] transition-colors">價目表</a>
             </nav>
-            <a href="https://roomie-chi.vercel.app/" class="bg-[#28c8c8] text-white px-5 py-2 rounded-full text-sm font-bold shadow-sm hover:bg-[#1eb0b0] transition-all hover:scale-105">
+            <a href="https://roomie-chi.vercel.app/" class="bg-[#28c8c8] text-white px-6 py-2.5 rounded-full t-small font-bold shadow-lg shadow-[#28c8c8]/20 hover:bg-[#1eb0b0] transition-all hover:scale-105">
                 在 LINE 群組建立服務
             </a>
         </div>
     </header>
 
     <!-- 主視覺區塊 (Hero) -->
-    <div class="bg-[#f0fdfa] pt-20 pb-28 px-4 text-center">
-        <div class="max-w-4xl mx-auto">
-            <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight text-gray-900">
-                不想做家事？<br/><span class="text-[#28c8c8]">那就出錢吧！</span>
+    <section class="pt-24 pb-32 px-6 text-center relative overflow-hidden">
+        <!-- 裝飾背景球 -->
+        <div class="absolute top-0 left-1/4 w-64 h-64 bg-[#28c8c8]/5 rounded-full blur-3xl animate-float"></div>
+        <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-100/30 rounded-full blur-3xl animate-float" style="animation-delay: -2s;"></div>
+
+        <div class="max-w-4xl mx-auto relative z-10">
+            <h1 class="t-hero font-black mb-8 tracking-tight text-gray-900">
+                不想做家事？<br/><span class="text-[#167a7a]">那就出錢吧！</span>
             </h1>
-            <p class="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mb-10">
+            <p class="t-h2 text-gray-500 mb-12 font-medium">
                 將「值日生」變成「懸賞令」<br/>
                 解決誰做家事的爭吵，讓勞務變成你的零用錢
             </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="#simulation" class="bg-[#28c8c8] text-white px-8 py-4 rounded-xl font-bold shadow-lg hover:bg-[#1eb0b0] transition-all flex items-center justify-center gap-2">
+            <div class="flex flex-col sm:flex-row gap-5 justify-center">
+                <a href="#simulation" class="bg-[#28c8c8] text-white px-10 py-4 rounded-2xl t-body font-bold shadow-xl shadow-[#28c8c8]/20 hover:bg-[#1eb0b0] transition-all flex items-center justify-center gap-2">
                     <i data-lucide="play-circle"></i>
                     試玩模擬器
                 </a>
-                <a href="#pricing" class="bg-white text-[#28c8c8] border-2 border-[#28c8c8] px-8 py-4 rounded-xl font-bold hover:bg-[#f0fdfa] transition-all">
+                <a href="#pricing" class="glass text-[#167a7a] border border-[#28c8c8]/30 px-10 py-4 rounded-2xl t-body font-bold hover:bg-white transition-all">
                     查看價目表
                 </a>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- 痛點說明 (Problem) -->
-    <div id="problem" class="scroll-mt-24 -mt-12 relative z-10 px-4 mb-24">
-        <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-8">
-            <div class="bg-white p-8 rounded-2xl shadow-xl shadow-gray-200/50 border border-gray-50 transition-all duration-300 hover:-translate-y-1">
-                <div class="flex items-center gap-4 mb-5">
-                    <div class="p-3 rounded-xl bg-gray-50 text-gray-600">
-                        <i data-lucide="users"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800">不再為排班吵架</h3>
+    <section id="problem" class="scroll-mt-24 px-6 pb-24">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
+            <div class="glass p-10 rounded-[2rem] shadow-sm transition-all duration-500 hover:shadow-xl hover:-translate-y-2">
+                <div class="w-14 h-14 bg-white rounded-2xl shadow-inner flex items-center justify-center text-[#28c8c8] mb-6">
+                    <i data-lucide="users" size="28"></i>
                 </div>
-                <div class="text-gray-500 leading-relaxed">
-                    傳統值日生制最怕「這週我有事」。用金錢量化勞務，讓「沒空」的人有合理的退場機制，不再欠人情。
-                </div>
+                <h3 class="t-h2 font-bold text-gray-900 mb-4 tracking-tight">不再為排班吵架</h3>
+                <p class="t-body text-gray-500 leading-relaxed">
+                    傳統值日生制最怕「這週我有事」。用金錢量化勞務，讓「沒空」的人有合理的退場機制。
+                </p>
             </div>
-            <div class="bg-white p-8 rounded-2xl shadow-xl shadow-gray-200/50 border-2 border-[#28c8c8] ring-4 ring-[#f0fdfa] transition-all duration-300 hover:-translate-y-1 relative">
-                <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#28c8c8] text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">核心概念</div>
-                <div class="flex items-center gap-4 mb-5">
-                    <div class="p-3 rounded-xl bg-[#f0fdfa] text-[#28c8c8]">
-                        <i data-lucide="dollar-sign"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800">勞務證券化</h3>
+            <div class="bg-white p-10 rounded-[2rem] shadow-2xl shadow-cyan-100 border-2 border-[#28c8c8]/20 transition-all duration-500 hover:-translate-y-2 relative">
+                <div class="w-14 h-14 bg-[#f0fdfa] rounded-2xl flex items-center justify-center text-[#28c8c8] mb-6">
+                    <i data-lucide="sparkles" size="28"></i>
                 </div>
-                <div class="text-gray-500 leading-relaxed">
-                    所有的家務都有「公定價」。掃廁所值 $80，倒垃圾值 $30。你想省錢就自己做，想偷懶就付錢，公平公正。
-                </div>
+                <h3 class="t-h2 font-bold text-gray-900 mb-4 tracking-tight">勞務證券化</h3>
+                <p class="t-body text-gray-500 leading-relaxed">
+                    所有的家務都有「公定價」。掃廁所值 $80，倒垃圾值 $30。你想省錢就自己做，想偷懶就付錢。
+                </p>
             </div>
-            <div class="bg-white p-8 rounded-2xl shadow-xl shadow-gray-200/50 border border-gray-50 transition-all duration-300 hover:-translate-y-1">
-                <div class="flex items-center gap-4 mb-5">
-                    <div class="p-3 rounded-xl bg-gray-50 text-gray-600">
-                        <i data-lucide="wallet"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800">差額自動結算</h3>
+            <div class="glass p-10 rounded-[2rem] shadow-sm transition-all duration-500 hover:shadow-xl hover:-translate-y-2">
+                <div class="w-14 h-14 bg-white rounded-2xl shadow-inner flex items-center justify-center text-[#28c8c8] mb-6">
+                    <i data-lucide="wallet" size="28"></i>
                 </div>
-                <div class="text-gray-500 leading-relaxed">
+                <h3 class="t-h2 font-bold text-gray-900 mb-4 tracking-tight">差額自動結算</h3>
+                <p class="t-body text-gray-500 leading-relaxed">
                     不需要每次拿零錢。系統紀錄每筆交易，只需要針對最終差額進行付款，簡單明瞭。
-                </div>
+                </p>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- 模擬器區塊 (Simulator) -->
-    <section id="simulation" class="scroll-mt-20 py-20 px-4 md:px-8 max-w-6xl mx-auto bg-gray-50 rounded-[3rem]">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+    <section id="simulation" class="scroll-mt-20 py-24 px-6 bg-gradient-to-b from-white to-[#f0fdfa] rounded-[4rem] mx-4 mb-24 border border-white">
+        <div class="text-center mb-16">
+            <h2 class="t-h1 font-black text-gray-900 mb-4">
                 雙視角體驗：這怎麼運作？
             </h2>
-            <div class="w-16 h-1 bg-[#28c8c8] mx-auto rounded-full mb-6"></div>
-            <p class="text-gray-500">對照室友 A (釋出者) 與 室友 B (搶單者) 的真實操作感</p>
+            <div class="w-12 h-1 bg-[#28c8c8] mx-auto rounded-full mb-6"></div>
+            <p class="t-body text-gray-500 font-medium">室友 A (釋出者) 與 室友 B (搶單者) 的真實操作感</p>
         </div>
 
-        <!-- 模擬器本體 -->
-        <div class="grid md:grid-cols-2 gap-8 items-start mb-12">
+        <!-- 模擬器主體 -->
+        <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-start mb-16">
             
-            <!-- 左側：室友 A (執行人/釋出者) -->
-            <div id="view-a" class="phone-frame active-view bg-white p-6 rounded-[2.5rem] border-2 border-transparent">
-                <div class="flex justify-between items-center mb-6">
-                    <div class="flex items-center gap-2">
-                        <div class="w-8 h-8 rounded-full bg-[#28c8c8] text-white flex items-center justify-center text-[10px] font-bold">A</div>
-                        <span class="font-bold text-sm">室友 A (值日生)</span>
+            <!-- 左側：室友 A -->
+            <div id="view-a" class="phone-frame active-view bg-white p-8 rounded-[3rem] shadow-2xl border border-gray-50">
+                <div class="flex justify-between items-center mb-8">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-2xl bg-[#e6f9f9] text-[#167a7a] flex items-center justify-center t-small font-bold">A</div>
+                        <span class="t-small font-bold text-gray-900">室友 A (值日生)</span>
                     </div>
                     <div class="text-right">
-                        <span id="wallet-a" class="font-mono font-bold text-gray-900">$0</span>
+                        <span id="wallet-a" class="font-mono font-bold t-h2 text-gray-900">$0</span>
                     </div>
                 </div>
 
                 <div id="a-content" class="space-y-6">
-                    <!-- LINE 通知樣式 -->
-                    <div class="bg-white rounded-2xl p-4 shadow-lg border border-gray-50 flex items-start gap-3">
-                        <div class="w-10 h-10 bg-[#28c8c8] rounded-xl flex items-center justify-center text-white shrink-0 shadow-lg shadow-[#28c8c8]/10">
-                            <i data-lucide="bell" size="18"></i>
+                    <!-- LINE 通知 -->
+                    <div class="bg-white rounded-[1.5rem] p-5 shadow-lg border border-gray-50 flex items-start gap-4">
+                        <div class="w-12 h-12 bg-[#28c8c8] rounded-2xl flex items-center justify-center text-white shrink-0">
+                            <i data-lucide="bell" size="20"></i>
                         </div>
                         <div class="flex-1">
-                            <div class="flex justify-between items-center mb-0.5">
-                                <span class="text-[10px] font-bold text-[#28c8c8]">家事交易所</span>
-                                <span class="text-[10px] text-gray-400">現在</span>
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="t-xs font-bold text-[#167a7a]">家事交易所</span>
+                                <span class="t-xs text-gray-400 font-medium">現在</span>
                             </div>
-                            <h4 class="text-sm font-bold text-gray-900">🧹 輪到你掃廁所了！</h4>
-                            <p class="text-[11px] text-gray-500">本週預定執行人：室友 A</p>
+                            <h4 class="t-small font-bold text-gray-900">🧹 輪到你掃廁所了！</h4>
+                            <p class="t-xs text-gray-500">本週預定執行人：室友 A</p>
                         </div>
                     </div>
                     
-                    <div class="bg-[#f0fdfa] p-4 rounded-2xl text-xs text-gray-600 border border-[#eaffff]">
+                    <div class="bg-[#f0fdfa] p-5 rounded-2xl t-small text-gray-600 border border-[#eaffff] leading-relaxed">
                         週末要去約會，實在不想掃廁所...該怎麼辦？
                     </div>
 
-                    <div class="flex flex-col gap-2">
-                        <button onclick="doSelf()" class="w-full py-3 bg-gray-50 hover:bg-gray-100 text-gray-500 rounded-xl text-xs font-semibold transition-all">
+                    <div class="flex flex-col gap-3">
+                        <button onclick="doSelf()" class="w-full py-4 bg-gray-50 hover:bg-gray-100 text-gray-500 rounded-2xl t-small font-bold transition-all border border-gray-100">
                             認命自己做 (+$0)
                         </button>
-                        <button onclick="releaseTask()" class="w-full py-3 bg-[#28c8c8] hover:bg-[#1eb0b0] text-white rounded-xl text-sm font-bold transition-all shadow-md shadow-[#28c8c8]/20">
+                        <button onclick="releaseTask()" class="w-full py-4 bg-[#28c8c8] hover:bg-[#1eb0b0] text-white rounded-2xl t-small font-bold transition-all shadow-lg shadow-[#28c8c8]/20">
                             支付 $80 釋出任務
                         </button>
                     </div>
-                    <p id="feedback-msg" class="text-center text-orange-500 text-[10px] font-semibold hidden"></p>
+                    <p id="feedback-msg" class="text-center text-orange-600 t-xs font-bold hidden"></p>
                 </div>
 
-                <div id="a-done" class="hidden animate-fade-in space-y-4 py-8">
-                    <div class="text-center">
-                        <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-3">
-                            <i data-lucide="check" size="24"></i>
-                        </div>
-                        <h4 class="font-bold text-gray-900">任務已成功釋出</h4>
-                        <p class="text-xs text-gray-500 mt-2">帳戶已預扣賞金，等待他人承接</p>
+                <div id="a-done" class="hidden animate-fade-in space-y-4 py-10 text-center">
+                    <div class="w-16 h-16 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-6 border border-emerald-100">
+                        <i data-lucide="check" size="32"></i>
                     </div>
+                    <h4 class="t-h2 font-bold text-gray-900">任務已成功釋出</h4>
+                    <p class="t-small text-gray-500 font-medium leading-relaxed">帳戶已預扣賞金，等待他人承接</p>
                 </div>
             </div>
 
-            <!-- 右側：室友 B (搶單者) -->
-            <div id="view-b" class="phone-frame inactive-view bg-white p-6 rounded-[2.5rem] border-2 border-transparent">
-                <div class="flex justify-between items-center mb-6">
-                    <div class="flex items-center gap-2">
-                        <div class="w-8 h-8 rounded-full bg-gray-400 text-white flex items-center justify-center text-[10px] font-bold">B</div>
-                        <span class="font-bold text-sm">室友 B (搶單者)</span>
+            <!-- 右側：室友 B -->
+            <div id="view-b" class="phone-frame inactive-view bg-white p-8 rounded-[3rem] shadow-2xl border border-gray-50">
+                <div class="flex justify-between items-center mb-8">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-2xl bg-gray-100 text-gray-500 flex items-center justify-center t-small font-bold">B</div>
+                        <span class="t-small font-bold text-gray-900">室友 B (搶單者)</span>
                     </div>
                     <div class="text-right">
-                        <span id="wallet-b" class="font-mono font-bold text-gray-900">$0</span>
+                        <span id="wallet-b" class="font-mono font-bold t-h2 text-gray-900">$0</span>
                     </div>
                 </div>
 
-                <div id="b-idle" class="flex flex-col items-center justify-center py-16 text-gray-200">
-                    <i data-lucide="inbox" size="40" class="mb-4"></i>
-                    <p class="text-xs font-medium">尚無可接單的懸賞...</p>
+                <div id="b-idle" class="flex flex-col items-center justify-center py-24 text-gray-300">
+                    <i data-lucide="inbox" size="56" class="mb-6 opacity-30"></i>
+                    <p class="t-small font-bold tracking-wide">尚無可接單的懸賞...</p>
                 </div>
 
-                <div id="b-alert" class="hidden animate-fade-in space-y-6">
-                    <!-- LINE 通知樣式 - 懸賞 -->
-                    <div class="bg-white rounded-2xl p-4 shadow-lg border border-red-50 flex items-start gap-3 ring-2 ring-red-50/50">
-                        <div class="w-10 h-10 bg-red-500 rounded-xl flex items-center justify-center text-white shrink-0 shadow-lg shadow-red-500/20 animate-pulse">
-                            <i data-lucide="megaphone" size="18"></i>
+                <div id="b-alert" class="hidden animate-fade-in space-y-8">
+                    <div class="bg-white rounded-[1.5rem] p-5 shadow-lg border border-red-50 flex items-start gap-4 ring-4 ring-red-50/50">
+                        <div class="w-12 h-12 bg-red-500 rounded-2xl flex items-center justify-center text-white shrink-0 shadow-lg shadow-red-500/20 animate-pulse">
+                            <i data-lucide="megaphone" size="20"></i>
                         </div>
                         <div class="flex-1">
-                            <div class="flex justify-between items-center mb-0.5">
-                                <span class="text-[10px] font-bold text-red-500">緊急懸賞通知</span>
-                                <span class="text-[10px] text-gray-400">現在</span>
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="t-xs font-bold text-red-500 uppercase tracking-widest">緊急懸賞通知</span>
+                                <span class="t-xs text-gray-400 font-medium">現在</span>
                             </div>
-                            <h4 class="text-sm font-bold text-gray-900">🚨 有人不想掃廁所！</h4>
-                            <p class="text-[11px] text-red-500 font-bold">只要完成即可現賺 $80</p>
+                            <h4 class="t-small font-bold text-gray-900">🚨 有人不想掃廁所！</h4>
+                            <p class="t-xs text-red-600 font-bold">只要完成即可現賺 $80</p>
                         </div>
                     </div>
-                    <button onclick="takeTask()" class="w-full py-3 bg-[#28c8c8] hover:bg-[#1eb0b0] text-white rounded-xl font-bold text-sm transition-all shadow-lg shadow-[#28c8c8]/20 flex items-center justify-center gap-2">
-                        <i data-lucide="zap" size="16"></i> 我要搶單 (+$80)
+                    <button onclick="takeTask()" class="w-full py-4 bg-[#28c8c8] hover:bg-[#1eb0b0] text-white rounded-2xl t-small font-bold transition-all shadow-xl shadow-[#28c8c8]/20 flex items-center justify-center gap-2">
+                        <i data-lucide="zap" size="18"></i> 我要搶單 (+$80)
                     </button>
                 </div>
 
-                <div id="b-done" class="hidden animate-fade-in space-y-4 py-8">
-                    <div class="text-center">
-                        <div class="w-14 h-14 bg-emerald-500 text-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-xl shadow-emerald-200">
-                            <i data-lucide="dollar-sign" size="28"></i>
-                        </div>
-                        <h4 class="font-bold text-emerald-900">搶單成功！</h4>
-                        <p class="text-xs text-emerald-600 mt-2">任務已歸入您的名下，請至首頁回報</p>
+                <div id="b-done" class="hidden animate-fade-in space-y-4 py-10 text-center">
+                    <div class="w-20 h-20 bg-emerald-500 text-white rounded-[2rem] flex items-center justify-center mx-auto mb-6 shadow-2xl shadow-emerald-200">
+                        <i data-lucide="dollar-sign" size="36"></i>
                     </div>
+                    <h4 class="t-h2 font-bold text-emerald-900">搶單成功！</h4>
+                    <p class="t-small text-emerald-700 font-medium leading-relaxed">任務已歸入您的名下，請至首頁回報</p>
                 </div>
             </div>
 
         </div>
 
-        <!-- 重置按鈕 -->
-        <div class="flex justify-center">
-            <button onclick="resetSim()" class="flex items-center gap-2 px-8 py-3 bg-white border-2 border-[#28c8c8] text-[#28c8c8] rounded-full font-bold hover:bg-[#f0fdfa] transition-all shadow-sm active:scale-95">
-                <i data-lucide="rotate-ccw" size="18"></i>
+        <div class="flex justify-center mb-24">
+            <button onclick="resetSim()" class="flex items-center gap-3 px-12 py-4 bg-white border-2 border-[#28c8c8] text-[#167a7a] rounded-full t-body font-bold hover:bg-[#f0fdfa] transition-all shadow-xl shadow-cyan-100 active:scale-95">
+                <i data-lucide="rotate-ccw" size="20"></i>
                 重置模擬
             </button>
         </div>
 
-        <!-- 流程 -->
-        <div class="mt-20 grid md:grid-cols-4 gap-8 text-center">
-            <div class="relative group">
-                <div class="w-12 h-12 bg-[#f0fdfa] text-[#28c8c8] rounded-2xl flex items-center justify-center font-bold mx-auto mb-4 group-hover:scale-110 transition-transform">1</div>
-                <h4 class="font-bold text-gray-800 mb-2">系統派工</h4>
-                <p class="text-sm text-gray-500">每週自動分配值日生</p>
-                <div class="hidden md:block absolute top-6 -right-1/2 w-full h-px bg-gray-200 -z-10"></div>
+        <!-- 流程步驟 -->
+        <div class="grid md:grid-cols-4 gap-12 max-w-6xl mx-auto px-6">
+            <div class="relative group text-center">
+                <div class="w-16 h-16 bg-[#28c8c8] text-white rounded-3xl flex items-center justify-center t-h2 font-black mx-auto mb-6 shadow-xl shadow-[#28c8c8]/30 transition-all group-hover:rotate-6 group-hover:scale-110">1</div>
+                <h4 class="t-h2 font-bold text-gray-900 mb-3 tracking-tight">系統派工</h4>
+                <p class="t-small text-gray-500 font-medium">每週自動分配值日生</p>
             </div>
-            <div class="relative group">
-                <div class="w-12 h-12 bg-[#f0fdfa] text-[#28c8c8] rounded-2xl flex items-center justify-center font-bold mx-auto mb-4 group-hover:scale-110 transition-transform">2</div>
-                <h4 class="font-bold text-gray-800 mb-2">自由選擇</h4>
-                <p class="text-sm text-gray-500">自己執行，或付費懸賞</p>
-                <div class="hidden md:block absolute top-6 -right-1/2 w-full h-px bg-gray-200 -z-10"></div>
+            <div class="relative group text-center">
+                <div class="w-16 h-16 bg-[#28c8c8] text-white rounded-3xl flex items-center justify-center t-h2 font-black mx-auto mb-6 shadow-xl shadow-[#28c8c8]/30 transition-all group-hover:rotate-6 group-hover:scale-110">2</div>
+                <h4 class="t-h2 font-bold text-gray-900 mb-3 tracking-tight">自由選擇</h4>
+                <p class="t-small text-gray-500 font-medium">自己執行，或付費懸賞</p>
             </div>
-            <div class="relative group">
-                <div class="w-12 h-12 bg-[#f0fdfa] text-[#28c8c8] rounded-2xl flex items-center justify-center font-bold mx-auto mb-4 group-hover:scale-110 transition-transform">3</div>
-                <h4 class="font-bold text-gray-800 mb-2">他人搶單</h4>
-                <p class="text-sm text-gray-500">重賞之下必有勇夫</p>
-                <div class="hidden md:block absolute top-6 -right-1/2 w-full h-px bg-gray-200 -z-10"></div>
+            <div class="relative group text-center">
+                <div class="w-16 h-16 bg-[#28c8c8] text-white rounded-3xl flex items-center justify-center t-h2 font-black mx-auto mb-6 shadow-xl shadow-[#28c8c8]/30 transition-all group-hover:rotate-6 group-hover:scale-110">3</div>
+                <h4 class="t-h2 font-bold text-gray-900 mb-3 tracking-tight">他人搶單</h4>
+                <p class="t-small text-gray-500 font-medium">重賞之下必有勇夫</p>
             </div>
-            <div class="group">
-                <div class="w-12 h-12 bg-orange-50 text-orange-500 rounded-2xl flex items-center justify-center font-bold mx-auto mb-4 group-hover:scale-110 transition-transform">4</div>
-                <h4 class="font-bold text-gray-800 mb-2 flex items-center justify-center gap-1">
-                    拍照驗收 <span class="text-[10px] bg-orange-500 text-white px-1.5 py-0.5 rounded shadow-sm">開發中</span>
+            <div class="group text-center">
+                <div class="w-16 h-16 bg-orange-500 text-white rounded-3xl flex items-center justify-center t-h2 font-black mx-auto mb-6 shadow-xl shadow-orange-500/30 transition-all group-hover:rotate-6 group-hover:scale-110">4</div>
+                <h4 class="t-h2 font-bold text-gray-900 mb-3 tracking-tight">
+                    拍照驗收 <span class="t-xs bg-white text-orange-600 px-2 py-0.5 rounded-full border border-orange-200">開發中</span>
                 </h4>
-                <p class="text-sm text-gray-500">上傳照片才算正式完工</p>
+                <p class="t-small text-gray-500 font-medium">上傳照片才算正式完工</p>
             </div>
         </div>
     </section>
 
     <!-- 價目表 (Pricing) -->
-    <section id="pricing" class="py-20 px-4 md:px-8 max-w-5xl mx-auto">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl font-bold text-gray-900 mb-4">草擬價目表</h2>
-            <div class="w-16 h-1 bg-[#28c8c8] mx-auto rounded-full"></div>
+    <section id="pricing" class="py-24 px-6 max-w-5xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="t-h1 font-black text-gray-900 mb-4">草擬價目表</h2>
+            <div class="w-12 h-1 bg-[#28c8c8] mx-auto rounded-full"></div>
         </div>
         
-        <div class="bg-white rounded-3xl shadow-xl shadow-gray-200/50 overflow-hidden border border-gray-100">
-            <div class="grid grid-cols-4 bg-[#f0fdfa] p-6 font-bold text-[#1fa5a5] border-b border-[#eaffff] text-sm md:text-base">
+        <div class="glass rounded-[3rem] shadow-2xl overflow-hidden border border-white/40">
+            <div class="grid grid-cols-4 bg-[#28c8c8]/5 p-8 t-small font-bold text-[#167a7a] border-b border-white">
                 <div class="col-span-2 md:col-span-1">任務項目</div>
                 <div class="hidden md:block">建議頻率</div>
                 <div class="col-span-1 text-right md:text-left">代班賞金</div>
                 <div class="hidden md:block">細節備註</div>
             </div>
             
-            <div class="grid grid-cols-4 p-6 border-b border-gray-50 hover:bg-[#f0fdfa]/30 transition-colors items-center">
-                <div class="col-span-2 md:col-span-1 font-semibold text-gray-800">倒一般垃圾</div>
-                <div class="hidden md:block text-gray-400">每週</div>
-                <div class="col-span-1 text-right md:text-left font-bold text-[#28c8c8]">$30</div>
-                <div class="hidden md:block text-gray-400 text-sm italic">包含整理垃圾袋</div>
+            <div class="grid grid-cols-4 p-8 border-b border-white hover:bg-white/50 transition-colors items-center text-gray-700">
+                <div class="col-span-2 md:col-span-1 font-bold t-body text-gray-900">倒一般垃圾</div>
+                <div class="hidden md:block t-small text-gray-400">每週</div>
+                <div class="col-span-1 text-right md:text-left font-bold text-[#167a7a] t-h2">$30</div>
+                <div class="hidden md:block t-small text-gray-400 font-medium">包含整理垃圾袋</div>
             </div>
-            <div class="grid grid-cols-4 p-6 border-b border-gray-50 hover:bg-[#f0fdfa]/30 transition-colors items-center">
-                <div class="col-span-2 md:col-span-1 font-semibold text-gray-800">倒回收/廚餘</div>
-                <div class="hidden md:block text-gray-400">每週</div>
-                <div class="col-span-1 text-right md:text-left font-bold text-[#28c8c8]">$30</div>
-                <div class="hidden md:block text-gray-400 text-sm italic">需清洗廚餘桶</div>
+            <div class="grid grid-cols-4 p-8 border-b border-white hover:bg-white/50 transition-colors items-center text-gray-700">
+                <div class="col-span-2 md:col-span-1 font-bold t-body text-gray-900">倒回收/廚餘</div>
+                <div class="hidden md:block t-small text-gray-400">每週</div>
+                <div class="col-span-1 text-right md:text-left font-bold text-[#167a7a] t-h2">$30</div>
+                <div class="hidden md:block t-small text-gray-400 font-medium">需清洗廚餘桶</div>
             </div>
-            <div class="grid grid-cols-4 p-6 border-b border-gray-50 hover:bg-[#f0fdfa]/30 transition-colors items-center">
-                <div class="col-span-2 md:col-span-1 font-semibold text-gray-800 flex items-center gap-2">
-                    <span class="text-[10px] bg-red-50 text-red-500 px-1.5 py-0.5 rounded uppercase font-bold">Hot</span> 掃廁所 (全套)
+            <div class="grid grid-cols-4 p-8 border-b border-white hover:bg-white/50 transition-colors items-center text-gray-700">
+                <div class="col-span-2 md:col-span-1 font-bold t-body text-gray-900 flex items-center gap-2">
+                    <span class="t-xs bg-red-50 text-red-600 px-2 py-0.5 rounded-full font-bold border border-red-100">Hot</span> 掃廁所
                 </div>
-                <div class="hidden md:block text-gray-400">雙週</div>
-                <div class="col-span-1 text-right md:text-left font-bold text-[#28c8c8]">$80</div>
-                <div class="hidden md:block text-gray-400 text-sm italic">含馬桶、地板、鏡面</div>
+                <div class="hidden md:block t-small text-gray-400">雙週</div>
+                <div class="col-span-1 text-right md:text-left font-bold text-[#167a7a] t-h2">$80</div>
+                <div class="hidden md:block t-small text-gray-400 font-medium italic">馬桶、地板、鏡面</div>
             </div>
-            <div class="grid grid-cols-4 p-6 border-b border-gray-50 hover:bg-[#f0fdfa]/30 transition-colors items-center">
-                <div class="col-span-2 md:col-span-1 font-semibold text-gray-800">清排水孔頭髮</div>
-                <div class="hidden md:block text-gray-400">雙週</div>
-                <div class="col-span-1 text-right md:text-left font-bold text-[#28c8c8]">$40</div>
-                <div class="hidden md:block text-gray-400 text-sm italic">防堵塞必備</div>
+            <div class="grid grid-cols-4 p-8 border-b border-white hover:bg-white/50 transition-colors items-center text-gray-700">
+                <div class="col-span-2 md:col-span-1 font-bold t-body text-gray-900">清排水孔頭髮</div>
+                <div class="hidden md:block t-small text-gray-400">雙週</div>
+                <div class="col-span-1 text-right md:text-left font-bold text-[#167a7a] t-h2">$40</div>
+                <div class="hidden md:block t-small text-gray-400 font-medium">防堵塞必備</div>
             </div>
-            <div class="grid grid-cols-4 p-6 border-b border-gray-50 hover:bg-[#f0fdfa]/30 transition-colors items-center">
-                <div class="col-span-2 md:col-span-1 font-semibold text-gray-800">吸塵與擦地</div>
-                <div class="hidden md:block text-gray-400">每月</div>
-                <div class="col-span-1 text-right md:text-left font-bold text-[#28c8c8]">$60</div>
-                <div class="hidden md:block text-gray-400 text-sm italic">公用空間全範圍</div>
+            <div class="grid grid-cols-4 p-8 items-center text-gray-700 hover:bg-white/50 transition-colors">
+                <div class="col-span-2 md:col-span-1 font-bold t-body text-gray-900">吸塵與擦地</div>
+                <div class="hidden md:block t-small text-gray-400">每月</div>
+                <div class="col-span-1 text-right md:text-left font-bold text-[#167a7a] t-h2">$60</div>
+                <div class="hidden md:block t-small text-gray-400 font-medium">公用空間全範圍</div>
             </div>
             
-            <div class="p-6 text-center text-xs text-gray-400 bg-gray-50/50">
+            <div class="p-6 text-center t-xs text-gray-400 bg-gray-50/50">
                 * 價格僅供室友參考，實際執行可依勞務困難度動態調整
             </div>
         </div>
     </section>
 
     <!-- 常見問題 (FAQ) -->
-    <section class="py-24 px-4 md:px-8 max-w-5xl mx-auto">
-        <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">常見問題</h2>
-        <div class="grid md:grid-cols-2 gap-8">
-            <div class="bg-white p-8 rounded-2xl border border-gray-100 relative group hover:border-[#28c8c8] transition-all">
-                <span class="absolute top-4 right-4 text-[10px] bg-orange-100 text-orange-600 px-2 py-1 rounded font-bold">開發中</span>
-                <h4 class="flex items-center gap-3 font-bold text-lg mb-4">
+    <section class="py-24 px-6 max-w-5xl mx-auto mb-20">
+        <h2 class="t-h1 font-black text-gray-900 mb-16 text-center">常見問題</h2>
+        <div class="grid md:grid-cols-2 gap-10">
+            <div class="glass p-10 rounded-[2.5rem] relative group hover:border-[#28c8c8] transition-all">
+                <span class="absolute top-6 right-6 t-xs bg-orange-100 text-orange-700 px-3 py-1 rounded-full font-bold border border-orange-200">開發中</span>
+                <h4 class="flex items-center gap-3 font-bold t-h2 mb-5 text-gray-900">
                     <i data-lucide="shield-check" class="text-emerald-500"></i>
                     如果不乾淨怎麼辦？
                 </h4>
-                <p class="text-gray-500 text-sm leading-relaxed">
+                <p class="text-gray-500 t-small leading-relaxed font-medium">
                     系統採 <strong>「拍照驗收制」</strong>。接單者必須上傳清潔後的照片。若大家覺得不達標，需在 24 小時內提出，否則視為通過。
                 </p>
             </div>
             
-            <div class="bg-white p-8 rounded-2xl border border-gray-100 relative group hover:border-[#28c8c8] transition-all">
-                <span class="absolute top-4 right-4 text-[10px] bg-orange-100 text-orange-600 px-2 py-1 rounded font-bold">開發中</span>
-                <h4 class="flex items-center gap-3 font-bold text-lg mb-4">
+            <div class="glass p-10 rounded-[2.5rem] relative group hover:border-[#28c8c8] transition-all">
+                <span class="absolute top-6 right-6 t-xs bg-orange-100 text-orange-700 px-3 py-1 rounded-full font-bold border border-orange-200">開發中</span>
+                <h4 class="flex items-center gap-3 font-bold t-h2 mb-5 text-gray-900">
                     <i data-lucide="trending-up" class="text-red-500"></i>
                     如果沒人接單怎麼辦？
                 </h4>
-                <p class="text-gray-500 text-sm leading-relaxed">
+                <p class="text-gray-500 t-small leading-relaxed font-medium">
                     若釋出後 <strong>24小時內</strong> 無人響應，原負責人需自行執行，或選擇 <strong>「加價懸賞」</strong> 直到重賞之下有勇夫為止。
                 </p>
             </div>
 
-            <div class="bg-white p-8 rounded-2xl border border-gray-100 group hover:border-[#28c8c8] transition-all">
-                <h4 class="flex items-center gap-3 font-bold text-lg mb-4">
+            <div class="glass p-10 rounded-[2.5rem] hover:border-[#28c8c8] transition-all">
+                <h4 class="flex items-center gap-3 font-bold t-h2 mb-5 text-gray-900">
                     <i data-lucide="shuffle" class="text-sky-500"></i>
                     可以直接換班嗎？
                 </h4>
-                <p class="text-gray-500 text-sm leading-relaxed">
+                <p class="text-gray-500 t-small leading-relaxed font-medium">
                     原則上 <strong>不建議私下換班</strong>。一律採用懸賞模式，由我付你錢幫我做，最不欠人情，帳目也最清楚。
                 </p>
             </div>
 
-            <div class="bg-white p-8 rounded-2xl border border-gray-100 group hover:border-[#28c8c8] transition-all">
-                <h4 class="flex items-center gap-3 font-bold text-lg mb-4">
-                    <i data-lucide="banknote" class="text-amber-500"></i>
+            <div class="glass p-10 rounded-[2.5rem] hover:border-[#28c8c8] transition-all">
+                <h4 class="flex items-center gap-3 font-bold t-h2 mb-5 text-gray-900">
+                    <i data-lucide="banknote" class="text-amber-600"></i>
                     具體怎麼付錢？
                 </h4>
-                <p class="text-gray-500 text-sm leading-relaxed">
+                <p class="text-gray-500 t-small leading-relaxed font-medium">
                     <strong>自動累計結算</strong>。系統會記錄每人的收益與支出，只需針對最終差額進行付款，省去瑣碎計算。
                 </p>
             </div>
@@ -379,16 +391,20 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-slate-900 text-white py-20 text-center relative overflow-hidden">
-        <div class="max-w-4xl mx-auto px-4 relative z-10">
-            <h2 class="text-3xl font-bold mb-6">準備好找回你的週末了嗎？</h2>
-            <p class="mb-10 text-slate-400">現在就加入「家事交易所」，讓家務不再是生活的負擔。</p>
-            <a href="https://roomie-chi.vercel.app/" class="bg-[#28c8c8] hover:bg-[#1eb0b0] text-white px-10 py-4 rounded-full font-bold transition-all inline-block shadow-2xl shadow-[#28c8c8]/20 hover:scale-105">
+    <footer class="bg-gray-900 text-white py-24 text-center relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-6 relative z-10">
+            <h2 class="t-h1 font-black mb-8 tracking-tight">準備好找回你的週末了嗎？</h2>
+            <p class="mb-12 text-gray-400 t-body font-medium">現在就加入「家事交易所」，讓家務不再是生活的負擔</p>
+            <a href="https://roomie-chi.vercel.app/" class="bg-[#28c8c8] hover:bg-[#1eb0b0] text-white px-12 py-5 rounded-full t-body font-black transition-all inline-block shadow-2xl shadow-[#28c8c8]/30 hover:scale-105 active:scale-95">
                 在 LINE 群組建立服務
             </a>
-            <div class="mt-16 pt-10 border-t border-white/5 text-sm text-slate-500">
+            <div class="mt-20 pt-12 border-t border-white/5 t-xs text-gray-600 font-bold uppercase tracking-widest">
                 <p>© 2026 嫩性計劃 - 致力於優化室友生存品質</p>
             </div>
+        </div>
+        <!-- 底部裝飾背景 -->
+        <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+            <div class="absolute -top-1/2 -left-1/4 w-[100%] h-[150%] bg-[#28c8c8] rounded-full blur-[120px]"></div>
         </div>
     </footer>
 
@@ -402,14 +418,14 @@
             const elWalletA = document.getElementById('wallet-a');
             const elWalletB = document.getElementById('wallet-b');
             elWalletA.innerText = walletA < 0 ? `-$${Math.abs(walletA)}` : `$${walletA}`;
-            elWalletA.className = `font-mono font-bold text-lg ${walletA < 0 ? 'text-red-400' : 'text-gray-900'}`;
+            elWalletA.className = `font-mono font-bold t-h2 ${walletA < 0 ? 'text-red-500' : 'text-gray-900'}`;
             elWalletB.innerText = walletB > 0 ? `+$${walletB}` : `$${walletB}`;
-            elWalletB.className = `font-mono font-bold text-lg ${walletB > 0 ? 'text-emerald-500' : 'text-gray-900'}`;
+            elWalletB.className = `font-mono font-bold t-h2 ${walletB > 0 ? 'text-emerald-600' : 'text-gray-900'}`;
         }
 
         function doSelf() {
             const feedback = document.getElementById('feedback-msg');
-            feedback.innerText = "好吧，認命做完了。 (無金流變動)";
+            feedback.innerText = "好吧，認命做完了 (無金流變動)";
             feedback.classList.remove('hidden');
             setTimeout(() => feedback.classList.add('hidden'), 2000);
         }
@@ -458,4 +474,3 @@
     </script>
 </body>
 </html>
-

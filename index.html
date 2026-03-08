@@ -34,7 +34,8 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* 嚴格字級控制 (4種尺寸) */
+        /* 嚴格字級控制 (保留 Hero 特例與 4 種基礎尺寸) */
+        .text-hero { font-size: 3.5rem; line-height: 1.1; letter-spacing: -0.04em; }
         .text-h1   { font-size: 2.5rem; line-height: 1.2; letter-spacing: -0.02em; }
         .text-h2   { font-size: 1.5rem; line-height: 1.4; letter-spacing: -0.01em; }
         .text-body { font-size: 1rem;   line-height: 1.6; }
@@ -140,13 +141,13 @@
 
         <div class="max-w-4xl mx-auto relative z-10">
             <h1 class="mb-8 drop-shadow-sm">
-                <span class="text-[#67777E] text-h2 font-normal block mb-2">不想做家事？</span>
-                <span class="text-slate-900 text-h1 font-black">那就<span class="text-[#28c8c8]">出錢</span>吧！</span>
+                <span class="text-[#67777E] text-[20px] font-normal block mb-2">不想做家事？</span>
+                <span class="text-slate-900 text-hero font-black">那就<span class="text-[#28c8c8]">出錢</span>吧！</span>
             </h1>
             
             <div class="mb-12 max-w-2xl mx-auto flex flex-col gap-3">
-                <p class="text-[#67777E] text-h2 font-medium">將「值日生」變成「懸賞令」</p>
-                <p class="text-[#67777E]/80 text-body">解決誰做家事的爭吵，讓勞務變成你的零用錢</p>
+                <p class="text-[#67777E] text-[20px] font-medium">將「值日生」變成「懸賞令」</p>
+                <p class="text-[#67777E]/80 text-[18px]">解決誰做家事的爭吵，讓勞務變成你的零用錢</p>
             </div>
             
             <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">

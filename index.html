@@ -108,13 +108,17 @@
 </head>
 <body class="overflow-x-hidden">
 
-    <header class="fixed top-0 left-0 right-0 z-50 flex justify-center pt-6 px-4">
-        <div class="px-6 py-3 flex items-center justify-between w-full max-w-5xl shadow-sm border border-white/80 bg-white/95 rounded-full backdrop-blur-sm">
-            <div class="flex items-center gap-2 font-black text-h2 text-[#28c8c8] tracking-tight">
+    <header class="fixed top-0 left-0 right-0 z-50 flex justify-center pt-4 md:pt-6 px-4">
+        <div class="px-5 py-3 md:px-6 md:py-3 flex flex-wrap items-center justify-between w-full max-w-5xl shadow-sm border border-white/80 bg-white/95 rounded-[1.5rem] md:rounded-full backdrop-blur-sm">
+            <div class="order-1 flex items-center gap-2 font-black text-h2 text-[#28c8c8] tracking-tight">
                 <span>家事交易所</span>
             </div>
             
-            <nav class="hidden md:flex gap-8 text-body font-bold text-slate-500">
+            <a href="https://roomie-chi.vercel.app/" class="order-2 md:order-3 btn-primary text-white px-4 py-2 md:px-6 md:py-2.5 rounded-full text-sm md:text-body font-bold tracking-wide">
+                在 LINE 建立服務
+            </a>
+            
+            <nav class="order-3 md:order-2 w-full md:w-auto mt-3 md:mt-0 flex justify-center gap-6 md:gap-8 text-sm md:text-body font-bold text-slate-500">
                 <a href="#problem" class="hover:text-[#28c8c8] transition-colors relative group">
                     為什麼需要？
                     <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#28c8c8] transition-all group-hover:w-full"></span>
@@ -128,10 +132,6 @@
                     <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#28c8c8] transition-all group-hover:w-full"></span>
                 </a>
             </nav>
-
-            <a href="https://roomie-chi.vercel.app/" class="btn-primary text-white px-6 py-2.5 rounded-full text-body font-bold tracking-wide">
-                在 LINE 建立服務
-            </a>
         </div>
     </header>
 

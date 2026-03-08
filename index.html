@@ -34,11 +34,10 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* 嚴格字級控制 (5種尺寸) */
-        .text-hero { font-size: 3.5rem; line-height: 1.1; letter-spacing: -0.04em; }
-        .text-h1   { font-size: 2.25rem; line-height: 1.2; letter-spacing: -0.02em; }
-        .text-h2   { font-size: 1.5rem;  line-height: 1.4; letter-spacing: -0.01em; }
-        .text-body { font-size: 1rem;    line-height: 1.6; }
+        /* 嚴格字級控制 (4種尺寸) */
+        .text-h1   { font-size: 2.5rem; line-height: 1.2; letter-spacing: -0.02em; }
+        .text-h2   { font-size: 1.5rem; line-height: 1.4; letter-spacing: -0.01em; }
+        .text-body { font-size: 1rem;   line-height: 1.6; }
         .text-sm   { font-size: 0.875rem; line-height: 1.5; }
 
         /* 現代卡片 (Lovable Style) */
@@ -111,10 +110,10 @@
     <header class="fixed top-0 left-0 right-0 z-50 flex justify-center pt-6 px-4">
         <div class="px-6 py-3 flex items-center justify-between w-full max-w-5xl shadow-sm border border-white/80 bg-white/95 rounded-full backdrop-blur-sm">
             <div class="flex items-center gap-2 font-black text-h2 text-[#28c8c8] tracking-tight">
-                <span class="text-[20px]">家事交易所</span>
+                <span>家事交易所</span>
             </div>
             
-            <nav class="hidden md:flex gap-8 text-sm font-bold text-slate-500">
+            <nav class="hidden md:flex gap-8 text-body font-bold text-slate-500">
                 <a href="#problem" class="hover:text-[#28c8c8] transition-colors relative group">
                     為什麼需要？
                     <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#28c8c8] transition-all group-hover:w-full"></span>
@@ -129,7 +128,7 @@
                 </a>
             </nav>
 
-            <a href="https://roomie-chi.vercel.app/" class="btn-primary text-white px-6 py-2.5 rounded-full text-sm font-bold tracking-wide">
+            <a href="https://roomie-chi.vercel.app/" class="btn-primary text-white px-6 py-2.5 rounded-full text-body font-bold tracking-wide">
                 在 LINE 建立服務
             </a>
         </div>
@@ -141,13 +140,13 @@
 
         <div class="max-w-4xl mx-auto relative z-10">
             <h1 class="mb-8 drop-shadow-sm">
-                <span class="text-[#67777E] text-[20px] font-normal block mb-2">不想做家事？</span>
-                <span class="text-slate-900 text-hero font-black">那就<span class="text-[#28c8c8]">出錢</span>吧！</span>
+                <span class="text-[#67777E] text-h2 font-normal block mb-2">不想做家事？</span>
+                <span class="text-slate-900 text-h1 font-black">那就<span class="text-[#28c8c8]">出錢</span>吧！</span>
             </h1>
             
             <div class="mb-12 max-w-2xl mx-auto flex flex-col gap-3">
-                <p class="text-[#67777E] text-[20px] font-medium">將「值日生」變成「懸賞令」</p>
-                <p class="text-[#67777E]/80 text-[18px]">解決誰做家事的爭吵，讓勞務變成你的零用錢</p>
+                <p class="text-[#67777E] text-h2 font-medium">將「值日生」變成「懸賞令」</p>
+                <p class="text-[#67777E]/80 text-body">解決誰做家事的爭吵，讓勞務變成你的零用錢</p>
             </div>
             
             <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -197,7 +196,7 @@
         <div class="max-w-6xl mx-auto bg-slate-50 rounded-[3rem] p-8 md:p-16 border border-white shadow-inner">
             <div class="text-center mb-16">
                 <h2 class="text-h1 font-black text-slate-900 mb-6">雙視角體驗</h2>
-                <p class="text-body text-slate-600 font-medium bg-[#f8ffff] inline-block px-6 py-3 rounded-2xl border border-[#e0f7f7] shadow-sm text-sm md:text-base">
+                <p class="text-body text-slate-600 font-medium bg-[#f8ffff] inline-block px-6 py-3 rounded-2xl border border-[#e0f7f7] shadow-sm">
                     情境：週末要去約會，實在不想掃廁所...該怎麼辦？
                 </p>
             </div>
@@ -207,8 +206,8 @@
                 <div id="view-a" class="simulator-view sim-active p-8">
                     <div class="flex justify-between items-center mb-8 border-b border-slate-100 pb-4">
                         <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-full bg-[#e0f7f7] text-[#167a7a] flex items-center justify-center font-bold text-sm">A</div>
-                            <span class="text-sm font-bold text-slate-800">室友 A</span>
+                            <div class="w-10 h-10 rounded-full bg-[#e0f7f7] text-[#167a7a] flex items-center justify-center font-bold text-body">A</div>
+                            <span class="text-body font-bold text-slate-800">室友 A</span>
                         </div>
                         <span id="wallet-a" class="font-mono font-bold text-h2 text-slate-800">$0</span>
                     </div>
@@ -220,23 +219,23 @@
                             </div>
                             <div class="flex-1 min-w-0">
                                 <div class="flex justify-between items-center w-full mb-1">
-                                    <span class="text-[10px] font-bold text-[#167a7a]">家事交易所</span>
-                                    <span class="text-[10px] text-slate-400">現在</span>
+                                    <span class="text-sm font-bold text-[#167a7a]">家事交易所</span>
+                                    <span class="text-sm text-slate-400">現在</span>
                                 </div>
-                                <h4 class="text-sm font-bold text-slate-900">🧹 輪到你掃廁所了！</h4>
-                                <p class="text-[12px] text-slate-500 mt-1">本週預定執行人：室友 A</p>
+                                <h4 class="text-body font-bold text-slate-900">🧹 輪到你掃廁所了！</h4>
+                                <p class="text-sm text-slate-500 mt-1">本週預定執行人：室友 A</p>
                             </div>
                         </div>
 
                         <div class="flex flex-col md:flex-row gap-3">
-                            <button onclick="doSelf()" class="flex-1 py-4 bg-slate-100 hover:bg-slate-200 text-slate-500 rounded-2xl text-sm font-bold transition-all">
+                            <button onclick="doSelf()" class="flex-1 py-4 bg-slate-100 hover:bg-slate-200 text-slate-500 rounded-2xl text-body font-bold transition-all">
                                 認命自己做 (+$0)
                             </button>
-                            <button onclick="releaseTask()" class="flex-1 py-4 btn-primary text-white rounded-2xl text-sm font-bold transition-all">
+                            <button onclick="releaseTask()" class="flex-1 py-4 btn-primary text-white rounded-2xl text-body font-bold transition-all">
                                 支付 $80 釋出任務
                             </button>
                         </div>
-                        <p id="feedback-msg" class="text-center text-orange-500 text-[12px] font-bold hidden"></p>
+                        <p id="feedback-msg" class="text-center text-orange-500 text-sm font-bold hidden"></p>
                     </div>
 
                     <div id="a-done" class="hidden animate-fade-in py-12 text-center">
@@ -244,22 +243,22 @@
                             <i data-lucide="check" size="32"></i>
                         </div>
                         <h4 class="text-h2 font-bold text-slate-900">任務已釋出</h4>
-                        <p class="text-sm text-slate-500 mt-2">帳戶已預扣賞金，等待他人承接</p>
+                        <p class="text-body text-slate-500 mt-2">帳戶已預扣賞金，等待他人承接</p>
                     </div>
                 </div>
 
                 <div id="view-b" class="simulator-view sim-inactive p-8">
                     <div class="flex justify-between items-center mb-8 border-b border-slate-100 pb-4">
                         <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center font-bold text-sm">B</div>
-                            <span class="text-sm font-bold text-slate-800">室友 B</span>
+                            <div class="w-10 h-10 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center font-bold text-body">B</div>
+                            <span class="text-body font-bold text-slate-800">室友 B</span>
                         </div>
                         <span id="wallet-b" class="font-mono font-bold text-h2 text-slate-800">$0</span>
                     </div>
 
                     <div id="b-idle" class="flex flex-col items-center justify-center py-24 text-slate-500">
                         <i data-lucide="inbox" size="48" class="mb-4 opacity-50"></i>
-                        <p class="text-sm">尚無可接單的懸賞...</p>
+                        <p class="text-body">尚無可接單的懸賞...</p>
                     </div>
 
                     <div id="b-alert" class="hidden animate-fade-in space-y-6">
@@ -269,14 +268,14 @@
                             </div>
                             <div class="flex-1 min-w-0">
                                 <div class="flex justify-between items-center w-full mb-1">
-                                    <span class="text-[10px] font-bold text-red-500">緊急懸賞</span>
-                                    <span class="text-[10px] text-slate-400">現在</span>
+                                    <span class="text-sm font-bold text-red-500">緊急懸賞</span>
+                                    <span class="text-sm text-slate-400">現在</span>
                                 </div>
-                                <h4 class="text-sm font-bold text-slate-900">🚨 有人不想掃廁所！</h4>
-                                <p class="text-[12px] text-red-600 font-bold mt-1">只要完成即可現賺 $80</p>
+                                <h4 class="text-body font-bold text-slate-900">🚨 有人不想掃廁所！</h4>
+                                <p class="text-sm text-red-600 font-bold mt-1">只要完成即可現賺 $80</p>
                             </div>
                         </div>
-                        <button onclick="takeTask()" class="w-full py-4 btn-primary text-white rounded-2xl text-sm font-bold transition-all flex justify-center items-center gap-2">
+                        <button onclick="takeTask()" class="w-full py-4 btn-primary text-white rounded-2xl text-body font-bold transition-all flex justify-center items-center gap-2">
                             <i data-lucide="zap" size="16"></i> 我要搶單 (+$80)
                         </button>
                     </div>
@@ -286,13 +285,13 @@
                             <i data-lucide="dollar-sign" size="32"></i>
                         </div>
                         <h4 class="text-h2 font-bold text-slate-900">搶單成功！</h4>
-                        <p class="text-sm text-slate-500 mt-2">任務已歸入您的名下，請至首頁回報</p>
+                        <p class="text-body text-slate-500 mt-2">任務已歸入您的名下，請至首頁回報</p>
                     </div>
                 </div>
             </div>
 
             <div class="flex justify-center">
-                <button onclick="resetSim()" class="flex items-center gap-2 px-8 py-3 bg-white border border-slate-200 text-slate-500 rounded-full text-sm font-bold hover:text-[#28c8c8] hover:border-[#28c8c8] transition-all shadow-sm">
+                <button onclick="resetSim()" class="flex items-center gap-2 px-8 py-3 bg-white border border-slate-200 text-slate-500 rounded-full text-body font-bold hover:text-[#28c8c8] hover:border-[#28c8c8] transition-all shadow-sm">
                     <i data-lucide="rotate-ccw" size="16"></i>
                     重置模擬
                 </button>
@@ -302,22 +301,22 @@
                 <div class="text-center group">
                     <div class="w-16 h-16 mx-auto bg-white text-[#28c8c8] rounded-2xl flex items-center justify-center text-h2 font-bold mb-4 shadow-md group-hover:bg-[#28c8c8] group-hover:text-white transition-colors">1</div>
                     <h4 class="text-h2 font-bold text-slate-900 mb-2">系統派工</h4>
-                    <p class="text-sm text-slate-500">每週自動分配值日生</p>
+                    <p class="text-body text-slate-500">每週自動分配值日生</p>
                 </div>
                 <div class="text-center group">
                     <div class="w-16 h-16 mx-auto bg-white text-[#28c8c8] rounded-2xl flex items-center justify-center text-h2 font-bold mb-4 shadow-md group-hover:bg-[#28c8c8] group-hover:text-white transition-colors">2</div>
                     <h4 class="text-h2 font-bold text-slate-900 mb-2">自由選擇</h4>
-                    <p class="text-sm text-slate-500">自己執行，或付費懸賞</p>
+                    <p class="text-body text-slate-500">自己執行，或付費懸賞</p>
                 </div>
                 <div class="text-center group">
                     <div class="w-16 h-16 mx-auto bg-white text-[#28c8c8] rounded-2xl flex items-center justify-center text-h2 font-bold mb-4 shadow-md group-hover:bg-[#28c8c8] group-hover:text-white transition-colors">3</div>
                     <h4 class="text-h2 font-bold text-slate-900 mb-2">他人搶單</h4>
-                    <p class="text-sm text-slate-500">重賞之下必有勇夫</p>
+                    <p class="text-body text-slate-500">重賞之下必有勇夫</p>
                 </div>
                 <div class="text-center group">
                     <div class="w-16 h-16 mx-auto bg-white text-orange-500 rounded-2xl flex items-center justify-center text-h2 font-bold mb-4 shadow-md group-hover:bg-orange-500 group-hover:text-white transition-colors">4</div>
-                    <h4 class="text-h2 font-bold text-slate-900 mb-2">拍照驗收 <span class="text-[10px] bg-orange-100 text-orange-600 px-2 py-0.5 rounded-full ml-1 align-middle">開發中</span></h4>
-                    <p class="text-sm text-slate-500">上傳照片才算正式完工</p>
+                    <h4 class="text-h2 font-bold text-slate-900 mb-2">拍照驗收 <span class="text-sm bg-orange-100 text-orange-600 px-2 py-0.5 rounded-full ml-1 align-middle">開發中</span></h4>
+                    <p class="text-body text-slate-500">上傳照片才算正式完工</p>
                 </div>
             </div>
         </div>
@@ -347,7 +346,7 @@
             </div>
 
             <div class="lovable-card p-8 group hover:border-[#28c8c8] transition-colors relative">
-                <span class="absolute top-6 right-6 text-[10px] bg-orange-100 text-orange-600 px-2 py-1 rounded-full font-bold">開發中</span>
+                <span class="absolute top-6 right-6 text-sm bg-orange-100 text-orange-600 px-2 py-1 rounded-full font-bold">開發中</span>
                 <h4 class="flex items-center gap-3 font-bold text-h2 mb-4 text-slate-900">
                     <i data-lucide="shield-check" class="text-[#28c8c8]"></i>
                     如果不乾淨怎麼辦？
@@ -358,7 +357,7 @@
             </div>
             
             <div class="lovable-card p-8 group hover:border-[#28c8c8] transition-colors relative">
-                <span class="absolute top-6 right-6 text-[10px] bg-orange-100 text-orange-600 px-2 py-1 rounded-full font-bold">開發中</span>
+                <span class="absolute top-6 right-6 text-sm bg-orange-100 text-orange-600 px-2 py-1 rounded-full font-bold">開發中</span>
                 <h4 class="flex items-center gap-3 font-bold text-h2 mb-4 text-slate-900">
                     <i data-lucide="trending-up" class="text-[#28c8c8]"></i>
                     如果沒人接單怎麼辦？
@@ -380,7 +379,7 @@
             <a href="https://roomie-chi.vercel.app/" class="btn-primary text-white px-12 py-5 rounded-full text-body font-bold inline-block hover:scale-105 active:scale-95 transition-transform">
                 在 LINE 建立服務
             </a>
-            <div class="mt-20 pt-10 border-t border-white/10 text-xs font-bold text-slate-600 uppercase tracking-widest">
+            <div class="mt-20 pt-10 border-t border-white/10 text-sm font-bold text-slate-600 uppercase tracking-widest">
                 <p>© 2026 嫩性計劃 • 致力於優化室友生存品質</p>
             </div>
         </div>

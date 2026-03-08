@@ -4,11 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>家事交易所</title>
-    <!-- 引入 Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- 引入 Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
-    <!-- 引入 Google Fonts (Noto Sans TC) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
@@ -99,7 +96,7 @@
         
         .sim-inactive {
             opacity: 0.6;
-            filter: grayscale(40%); /* 移除 blur(1px) 以解決文字不清楚的問題 */
+            filter: grayscale(40%);
             transform: scale(0.95);
             z-index: 0;
         }
@@ -111,9 +108,8 @@
 </head>
 <body class="overflow-x-hidden">
 
-    <!-- 漂浮導航列 -->
     <header class="fixed top-0 left-0 right-0 z-50 flex justify-center pt-6 px-4">
-        <div class="lovable-card !rounded-full px-6 py-3 flex items-center justify-between w-full max-w-5xl shadow-sm border-white/80 bg-white/95">
+        <div class="px-6 py-3 flex items-center justify-between w-full max-w-5xl shadow-sm border border-white/80 bg-white/95 rounded-full backdrop-blur-sm">
             <div class="flex items-center gap-2 font-black text-h2 text-[#28c8c8] tracking-tight">
                 <span class="text-[20px]">家事交易所</span>
             </div>
@@ -125,10 +121,6 @@
                 </a>
                 <a href="#simulation" class="hover:text-[#28c8c8] transition-colors relative group">
                     怎麼運作？
-                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#28c8c8] transition-all group-hover:w-full"></span>
-                </a>
-                <a href="#pricing" class="hover:text-[#28c8c8] transition-colors relative group">
-                    價目表
                     <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#28c8c8] transition-all group-hover:w-full"></span>
                 </a>
                 <a href="#faq" class="hover:text-[#28c8c8] transition-colors relative group">
@@ -143,14 +135,11 @@
         </div>
     </header>
 
-    <!-- 主視覺 (Hero) -->
     <section class="pt-48 pb-20 px-6 text-center relative overflow-hidden">
-        <!-- 裝飾光暈 -->
         <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-[#28c8c8] rounded-full mix-blend-multiply filter blur-[128px] opacity-10 animate-pulse"></div>
         <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-200 rounded-full mix-blend-multiply filter blur-[128px] opacity-20"></div>
 
         <div class="max-w-4xl mx-auto relative z-10">
-            <!-- 標題區域 -->
             <h1 class="mb-8 drop-shadow-sm">
                 <span class="text-[#67777E] text-[20px] font-normal block mb-2">不想做家事？</span>
                 <span class="text-slate-900 text-hero font-black">那就<span class="text-[#28c8c8]">出錢</span>吧！</span>
@@ -166,19 +155,14 @@
                     <i data-lucide="play-circle" class="group-hover:scale-110 transition-transform"></i>
                     試玩模擬器
                 </a>
-                <a href="#pricing" class="px-10 py-4 rounded-full text-body font-bold text-[#167a7a] bg-white border border-slate-200 shadow-sm hover:shadow-md hover:border-[#28c8c8] transition-all w-full sm:w-auto text-center">
-                    查看價目表
-                </a>
             </div>
         </div>
     </section>
 
-    <!-- 痛點 (Features) -->
     <section id="problem" class="py-24 px-6 relative">
         <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
-            <!-- Card 1 -->
-            <div class="lovable-card p-10 flex flex-col items-center text-center group">
-                <div class="w-16 h-16 bg-[#f0fdfa] rounded-2xl flex items-center justify-center text-[#28c8c8] mb-6 group-hover:scale-110 transition-transform duration-300">
+            <div class="lovable-card p-10 flex flex-col items-center text-center relative border-[#28c8c8]/30 bg-white">
+                <div class="w-16 h-16 bg-[#28c8c8] rounded-2xl flex items-center justify-center text-white mb-6 shadow-lg shadow-[#28c8c8]/30">
                     <i data-lucide="users" size="32"></i>
                 </div>
                 <h3 class="text-h2 font-bold text-slate-900 mb-4">不再為排班吵架</h3>
@@ -187,20 +171,18 @@
                 </p>
             </div>
 
-            <!-- Card 2 -->
             <div class="lovable-card p-10 flex flex-col items-center text-center relative border-[#28c8c8]/30 bg-white">
                 <div class="w-16 h-16 bg-[#28c8c8] rounded-2xl flex items-center justify-center text-white mb-6 shadow-lg shadow-[#28c8c8]/30">
                     <i data-lucide="sparkles" size="32"></i>
                 </div>
-                <h3 class="text-h2 font-bold text-slate-900 mb-4">勞務證券化</h3>
+                <h3 class="text-h2 font-bold text-slate-900 mb-4">家事明碼標價</h3>
                 <p class="text-body text-slate-500">
                     所有的家務都有「公定價」。掃廁所值 $80，倒垃圾值 $30。你想省錢就自己做，想偷懶就付錢
                 </p>
             </div>
 
-            <!-- Card 3 -->
-            <div class="lovable-card p-10 flex flex-col items-center text-center group">
-                <div class="w-16 h-16 bg-[#f0fdfa] rounded-2xl flex items-center justify-center text-[#28c8c8] mb-6 group-hover:scale-110 transition-transform duration-300">
+            <div class="lovable-card p-10 flex flex-col items-center text-center relative border-[#28c8c8]/30 bg-white">
+                <div class="w-16 h-16 bg-[#28c8c8] rounded-2xl flex items-center justify-center text-white mb-6 shadow-lg shadow-[#28c8c8]/30">
                     <i data-lucide="wallet" size="32"></i>
                 </div>
                 <h3 class="text-h2 font-bold text-slate-900 mb-4">差額自動結算</h3>
@@ -211,7 +193,6 @@
         </div>
     </section>
 
-    <!-- 模擬器 (Simulator) -->
     <section id="simulation" class="py-24 px-4">
         <div class="max-w-6xl mx-auto bg-slate-50 rounded-[3rem] p-8 md:p-16 border border-white shadow-inner">
             <div class="text-center mb-16">
@@ -223,7 +204,6 @@
 
             <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-start mb-8">
                 
-                <!-- Roommate A -->
                 <div id="view-a" class="simulator-view sim-active p-8">
                     <div class="flex justify-between items-center mb-8 border-b border-slate-100 pb-4">
                         <div class="flex items-center gap-3">
@@ -233,9 +213,7 @@
                         <span id="wallet-a" class="font-mono font-bold text-h2 text-slate-800">$0</span>
                     </div>
 
-                    <!-- A Content -->
                     <div id="a-content" class="space-y-6">
-                        <!-- LINE Notification Bubble -->
                         <div class="bg-white rounded-2xl p-4 shadow-lg shadow-slate-200/50 border border-slate-50 flex gap-4">
                             <div class="w-12 h-12 bg-[#28c8c8] rounded-xl flex items-center justify-center text-white shrink-0 shadow-md">
                                 <i data-lucide="bell" size="20"></i>
@@ -254,7 +232,6 @@
                             週末要去約會，實在不想掃廁所...該怎麼辦？
                         </div>
 
-                        <!-- 調整：統一使用 py-4 -->
                         <div class="flex flex-col md:flex-row gap-3">
                             <button onclick="doSelf()" class="flex-1 py-4 bg-slate-100 hover:bg-slate-200 text-slate-500 rounded-2xl text-sm font-bold transition-all">
                                 認命自己做 (+$0)
@@ -266,7 +243,6 @@
                         <p id="feedback-msg" class="text-center text-orange-500 text-[12px] font-bold hidden"></p>
                     </div>
 
-                    <!-- A Done State -->
                     <div id="a-done" class="hidden animate-fade-in py-12 text-center">
                         <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4">
                             <i data-lucide="check" size="32"></i>
@@ -276,7 +252,6 @@
                     </div>
                 </div>
 
-                <!-- Roommate B -->
                 <div id="view-b" class="simulator-view sim-inactive p-8">
                     <div class="flex justify-between items-center mb-8 border-b border-slate-100 pb-4">
                         <div class="flex items-center gap-3">
@@ -327,7 +302,6 @@
                 </button>
             </div>
 
-            <!-- Steps -->
             <div class="grid md:grid-cols-4 gap-8 mt-24">
                 <div class="text-center group">
                     <div class="w-16 h-16 mx-auto bg-white text-[#28c8c8] rounded-2xl flex items-center justify-center text-h2 font-bold mb-4 shadow-md group-hover:bg-[#28c8c8] group-hover:text-white transition-colors">1</div>
@@ -353,70 +327,9 @@
         </div>
     </section>
 
-    <!-- 價目表 (Pricing) -->
-    <section id="pricing" class="py-24 px-6 relative">
-        <div class="max-w-4xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-h1 font-black text-slate-900 mb-4">草擬價目表</h2>
-                <div class="w-12 h-1 bg-[#28c8c8] mx-auto rounded-full"></div>
-            </div>
-            
-            <div class="lovable-card overflow-hidden">
-                <div class="grid grid-cols-4 bg-slate-50/50 p-6 text-sm font-bold text-[#167a7a] border-b border-slate-100">
-                    <div class="col-span-2 md:col-span-1">任務項目</div>
-                    <div class="hidden md:block">頻率</div>
-                    <div class="col-span-1 text-right md:text-left">代班賞金</div>
-                    <div class="hidden md:block">細節</div>
-                </div>
-                
-                <div class="divide-y divide-slate-100">
-                    <div class="grid grid-cols-4 p-6 hover:bg-[#f0fdfa]/50 transition-colors items-center">
-                        <div class="col-span-2 md:col-span-1 font-bold text-slate-900">倒一般垃圾</div>
-                        <div class="hidden md:block text-sm text-slate-400">每週</div>
-                        <div class="col-span-1 text-right md:text-left font-black text-[#167a7a] text-lg">$30</div>
-                        <div class="hidden md:block text-sm text-slate-400">包含整理垃圾袋</div>
-                    </div>
-                    <div class="grid grid-cols-4 p-6 hover:bg-[#f0fdfa]/50 transition-colors items-center">
-                        <div class="col-span-2 md:col-span-1 font-bold text-slate-900">倒回收/廚餘</div>
-                        <div class="hidden md:block text-sm text-slate-400">每週</div>
-                        <div class="col-span-1 text-right md:text-left font-black text-[#167a7a] text-lg">$30</div>
-                        <div class="hidden md:block text-sm text-slate-400">需清洗廚餘桶</div>
-                    </div>
-                    <div class="grid grid-cols-4 p-6 hover:bg-[#f0fdfa]/50 transition-colors items-center relative overflow-hidden">
-                        <div class="absolute left-0 top-0 bottom-0 w-1 bg-[#28c8c8]"></div>
-                        <div class="col-span-2 md:col-span-1 font-bold text-slate-900 flex items-center gap-2">
-                            <span class="text-[10px] bg-red-100 text-red-600 px-2 py-0.5 rounded-full font-bold">HOT</span> 掃廁所
-                        </div>
-                        <div class="hidden md:block text-sm text-slate-400">雙週</div>
-                        <div class="col-span-1 text-right md:text-left font-black text-[#167a7a] text-lg">$80</div>
-                        <div class="hidden md:block text-sm text-slate-400">含馬桶、地板、鏡面</div>
-                    </div>
-                    <div class="grid grid-cols-4 p-6 hover:bg-[#f0fdfa]/50 transition-colors items-center">
-                        <div class="col-span-2 md:col-span-1 font-bold text-slate-900">清排水孔頭髮</div>
-                        <div class="hidden md:block text-sm text-slate-400">雙週</div>
-                        <div class="col-span-1 text-right md:text-left font-black text-[#167a7a] text-lg">$40</div>
-                        <div class="hidden md:block text-sm text-slate-400">防堵塞必備</div>
-                    </div>
-                    <div class="grid grid-cols-4 p-6 hover:bg-[#f0fdfa]/50 transition-colors items-center">
-                        <div class="col-span-2 md:col-span-1 font-bold text-slate-900">吸塵與擦地</div>
-                        <div class="hidden md:block text-sm text-slate-400">每月</div>
-                        <div class="col-span-1 text-right md:text-left font-black text-[#167a7a] text-lg">$60</div>
-                        <div class="hidden md:block text-sm text-slate-400">公用空間全範圍</div>
-                    </div>
-                </div>
-                
-                <div class="p-4 bg-slate-50 text-center text-[12px] font-bold text-slate-400 tracking-wide">
-                    * 價格僅供室友參考，實際執行可依勞務困難度動態調整
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ -->
     <section id="faq" class="py-24 px-6 max-w-5xl mx-auto mb-20">
         <h2 class="text-h1 font-black text-slate-900 mb-16 text-center">常見問題</h2>
         <div class="grid md:grid-cols-2 gap-8">
-            <!-- 1. 可以換班 -->
             <div class="lovable-card p-8 hover:border-[#28c8c8] transition-colors">
                 <h4 class="flex items-center gap-3 font-bold text-h2 mb-4 text-slate-900">
                     <i data-lucide="shuffle" class="text-[#28c8c8]"></i>
@@ -427,7 +340,6 @@
                 </p>
             </div>
 
-            <!-- 2. 怎麼付錢 -->
             <div class="lovable-card p-8 hover:border-[#28c8c8] transition-colors">
                 <h4 class="flex items-center gap-3 font-bold text-h2 mb-4 text-slate-900">
                     <i data-lucide="banknote" class="text-[#28c8c8]"></i>
@@ -438,7 +350,6 @@
                 </p>
             </div>
 
-            <!-- 3. 不乾淨怎麼辦 -->
             <div class="lovable-card p-8 group hover:border-[#28c8c8] transition-colors relative">
                 <span class="absolute top-6 right-6 text-[10px] bg-orange-100 text-orange-600 px-2 py-1 rounded-full font-bold">開發中</span>
                 <h4 class="flex items-center gap-3 font-bold text-h2 mb-4 text-slate-900">
@@ -450,7 +361,6 @@
                 </p>
             </div>
             
-            <!-- 4. 沒人接單怎麼辦 -->
             <div class="lovable-card p-8 group hover:border-[#28c8c8] transition-colors relative">
                 <span class="absolute top-6 right-6 text-[10px] bg-orange-100 text-orange-600 px-2 py-1 rounded-full font-bold">開發中</span>
                 <h4 class="flex items-center gap-3 font-bold text-h2 mb-4 text-slate-900">
@@ -464,9 +374,7 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="bg-slate-900 text-white py-32 text-center relative overflow-hidden">
-        <!-- 裝飾背景 -->
         <div class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
         <div class="absolute -top-24 -left-24 w-96 h-96 bg-[#28c8c8] rounded-full filter blur-[100px] opacity-20"></div>
         
@@ -482,7 +390,6 @@
         </div>
     </footer>
 
-    <!-- Script 邏輯 -->
     <script>
         lucide.createIcons();
         let walletA = 0;
